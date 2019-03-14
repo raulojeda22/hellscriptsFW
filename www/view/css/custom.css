@@ -1,0 +1,337 @@
+/* Your custom css code goes here */
+.slider {
+    height: 300px;
+}
+
+.toggle_radio{
+    position: relative;
+    background: rgba(255,255,255,.1);
+    margin: 4px auto;
+    overflow: hidden;
+    padding: 0 !important;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    position: relative;
+    height: 26px;
+    width: 318px;
+  }
+  .toggle_radio > * {
+    float: left;
+  }
+  .toggle_radio input[type=radio]{
+    display: none;
+    /*position: fixed;*/
+  }
+  .toggle_radio label{
+    color: rgba(255,255,255,.9);
+    z-index: 0;
+    display: block;
+    width: 100px;
+    height: 20px;
+    margin: 3px 3px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1;
+    /*background: rgba(0,0,0,.1);*/
+    text-align: center;
+    /*margin: 0 2px;*/
+    /*background: blue;*/ /*make it blue*/
+  }
+  .toggle_option_slider{
+    /*display: none;*/
+    /*background: red;*/
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 3px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    transition: all .4s ease;
+  }
+  
+  #first_toggle:checked ~ .toggle_option_slider{
+    background: rgba(255,255,255,.3);
+    left: 3px;
+  }
+  #second_toggle:checked ~ .toggle_option_slider{
+    background: rgba(255,255,255,.3);
+    left: 109px;
+  }
+  #third_toggle:checked ~ .toggle_option_slider{
+    background: rgba(255,255,255,.3);
+    left: 215px;
+  }
+
+.ui-widget-content {
+  border: 1px solid #000000 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.ui-widget-header {     
+  border: 1px solid #ae0014 !important;
+  background: #ae0014 !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  border: 1px solid #ae0014 !important;
+  background: #ae0014 !important;
+  font-weight: bold !important;
+  color: #ffffff !important;
+}
+
+.pagination > .disabled > a, .pagination > .disabled > a:focus, .pagination > .disabled > a:hover, .pagination > .disabled > span, .pagination > .disabled > span:focus, .pagination > .disabled > span:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #ae0014 !important;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+  z-index: 3; 
+  color: #fff;
+  cursor: default;
+  background-color:#ae0014 !important;
+  border-color:#ae0014 !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+  background-color: #000 !important;
+  border-color: #ae0014 !important;
+  color: #fff !important;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+  width: auto;
+  display: inline-block;
+  background-color: #000 !important;
+  border-color: #ae0014 !important;
+  color: #fff !important;
+}
+
+.jqx-widget-metrodark .jqx-grid-cell-selected-metrodark, .jqx-grid-cell-selected-metrodark {
+  border-color: #cf031b !important;
+  background-color: #cf031b  !important;
+}
+
+.jqx-fill-state-hover-metrodark {
+  background-color: #ae0014 !important;
+  border-color: #ae0014 !important;
+}
+
+.jqx-fill-state-pressed-metrodark {
+  border-color: #ae0014 !important;
+  background-color: #ae0014 !important;
+}
+
+.jqx-widget-content-metrodark {
+  border-color: rgb(45, 45, 49) !important;
+  background-color: #121213 !important;
+}
+
+.flexslider, .flexslider .slides > li, .flexslider2, .flexslider2 .slides > li, .slider-height {
+  height: 250px !important;
+  border: 1;
+}
+
+.slides-text {
+  padding-top: 55px !important;
+}
+
+.alignColumn {
+  float: none; 
+  display: inline-block; 
+  margin: 0 -0.125em; 
+  vertical-align: top;
+}
+
+.max-line {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  line-height: 1.8em;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-white:hover {
+  color: #ae0014;
+}
+
+.probootstrap-footer.probootstrap-bg {
+  padding: 1em !important;
+}
+
+body {
+  background-color: #111; 
+}
+
+.probootstrap-loader {
+  background: #000 url(../img/loader.gif) center no-repeat !important;
+}
+
+.probootstrap-slider.flexslider{
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.probootstrap-animated {
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.mapInfoWindow {
+  background-color: #000;
+}
+
+
+/*style the box*/  
+.gm-style .gm-style-iw {
+  background-color: #ae0014 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 50px !important;
+  padding-top: 10px;
+  display: block !important;
+}    
+
+/*style the p tag*/
+.gm-style .gm-style-iw #google-popup p{
+  padding: 10px;
+}
+
+
+/*style the arrow*/
+.gm-style div div div div div div div div {
+  background-color: #ae0014 !important;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+/*style the link*/
+.gm-style div div div div div div div div a {
+  color: #f1f1f1;
+  font-weight: bold;
+}
+
+.text-default {
+  color: #ae0014;
+}
+
+.search-sec{
+  padding: 2rem;
+}
+.search-slt{
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+.wrn-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+@media (min-width: 992px){
+  .search-sec{
+      position: relative;
+      top: -114px;
+      background: rgba(26, 70, 104, 0.51);
+  }
+}
+
+@media (max-width: 992px){
+  .search-sec{
+      background: #1A4668;
+  }
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.languagepicker {
+	background-color: #FFF;
+	display: inline-block;
+	padding: 0;
+	height: 40px;
+	overflow: hidden;
+	transition: all .3s ease;
+	margin: 0 50px 10px 0;
+	vertical-align: top;
+	float: left;
+}
+
+.languagepicker:hover {
+	/* don't forget the 1px border */
+	height: 81px;
+}
+
+.languagepicker button{
+	color: #000;
+	text-decoration: none;
+}
+
+.languagepicker li {
+	display: block;
+	padding: 0px 20px;
+	line-height: 40px;
+	border-top: 1px solid #EEE;
+}
+
+.languagepicker li:hover{
+	background-color: #EEE;
+}
+
+.languagepicker a:first-child li {
+	border: none;
+	background: #FFF !important;
+}
+
+.languagepicker li img {
+	margin-right: 5px;
+}
+
+.roundborders {
+	border-radius: 5px;
+}
+
+.large:hover {
+	/* 
+	don't forget the 1px border!
+	The first language is 40px heigh, 
+	the others are 41px
+	*/
+	height: 245px;
+}
