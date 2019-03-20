@@ -4,7 +4,7 @@ class FrontController {
     public function FrontController(){
         $this->uri=$_SERVER['REQUEST_URI'];
         if ($_SERVER['HTTP_HOST']=='localhost'){
-            $this->uri=str_replace('/hellscripts/',"",$this->uri);
+            $this->uri=str_replace('/hellscriptsFW/',"",$this->uri);
         } else {
             $this->uri=ltrim($this->uri, '/');
         }

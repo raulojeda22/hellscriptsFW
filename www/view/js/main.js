@@ -359,7 +359,7 @@
 		var pathname = window.location.pathname.split('/').slice(-1).pop();
 		$('.bannerItem').removeClass('active');
 		$('#'+pathname).addClass('active');
-		if(pathname=='hellscripts'||pathname==""){
+		if(pathname=='hellscriptsFW'||pathname==""){
 			$('#home').addClass('active');
 		}
 	}

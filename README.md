@@ -1,6 +1,6 @@
-# Hell Scripts
+# Hell Scripts FW
 
-Hell Scripts is a web page for learning purposes built at classroom using PHP7, Jquery, MVC, SQL, Apache, a PHP Object Oriented Framework to manage objects from the database, an external API and an internal API based on authentication and permissions to resources.
+Hell Scripts FW is a web page for learning purposes built at classroom using PHP7, Jquery, MVC, SQL, Apache, a PHP Object Oriented Framework to manage objects from the database, an external API and an internal API based on authentication and permissions to resources.
 
 ### Pages
 
@@ -17,7 +17,7 @@ Hell Scripts is a web page for learning purposes built at classroom using PHP7, 
 
 ### Technologies
 
-Hell Scripts uses a number of open source projects to work properly:
+Hell Scripts FW uses a number of open source projects to work properly:
 
 * PHP
 * Bootstrap
@@ -82,7 +82,7 @@ Finally you should create the tables located on the /backend/mwb/hellscripts.mwb
 
 ### BBDD
 
-![alt text](https://raw.githubusercontent.com/raulojeda22/hellscripts/master/backend/models/mwb/databaseScheme.png)
+![alt text](https://raw.githubusercontent.com/raulojeda22/hellscriptsFW/master/backend/models/mwb/databaseScheme.png)
 
 ### Todos
 

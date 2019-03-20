@@ -7,7 +7,7 @@
                 </div>
                 <div class="probootstrap-footer-widget">
                     <p>&copy; <?php echo date("Y"); ?> Designed by <a href="https://www.github.com/raulojeda22" >Raül Ojeda</a></p>
-                    <p><a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.html" >GNU General Public License.</a> Project available on <a target="_blank" href="https://github.com/raulojeda22/hellscripts">Github</a></p>
+                    <p><a target="_blank" href="https://www.gnu.org/licenses/gpl-3.0.html" >GNU General Public License.</a> Project available on <a target="_blank" href="https://github.com/raulojeda22/hellscriptsFW">Github</a></p>
                     <ul class="languagepicker roundborders">
                         <a style="cursor:pointer" class="changeLanguage" name="english"><li><img src="http://i64.tinypic.com/fd60km.png"/>English</li></a>
                         <a style="cursor:pointer" class="changeLanguage" name="spanish"><li><img src="http://i68.tinypic.com/avo5ky.png"/>Español</li></a>

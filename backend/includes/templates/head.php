@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hell Scripts</title>
+  <title>Hell Scripts FW</title>
   <meta name="description" content="Share and learn programming knowledge, communicate with other developers and help create big projects.">
   <meta name="keywords" content="code, programming, learn, share, knowledge, developers, join, help, build, contributions, community, project, projects, create, own, start">
   <meta name="author" content="Raül Ojeda">
