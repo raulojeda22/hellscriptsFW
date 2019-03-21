@@ -47,7 +47,6 @@ class ModelController extends ControllerCore{
             } else {
                 $elements=$this->GETImportant($data);
                 foreach ($elements as $element){
-                    error_log(print_r($element,1));
                     if ($element['idUser']){
                         $authentication = ControllerCore::getAuthenticationByUserId($element['idUser']);
                         if (is_object($authentication) && property_exists($authentication,'token') 

@@ -25,7 +25,6 @@ if ($method=='POST' && property_exists($postParams,'password')
 } else {
     $object = User::getInstance($headers['Authorization']);
     include_once _PROJECT_PATH_.'/backend/controllers/ApiController.php';
-    error_log(print_r(json_encode($results),1));
     echo json_encode($results);
     
 }
