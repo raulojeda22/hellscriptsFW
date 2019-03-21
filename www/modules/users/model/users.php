@@ -8,14 +8,14 @@ if ($method=='POST'){
 }
 if ($method=='POST' && property_exists($postParams,'password')
 && property_exists($postParams,'email') && !array_key_exists('Authorization',$headers)){
-    $object = new User('');
+    $object = User::getInstance('');
     $results = $object->login($postParams->email,$postParams->password);
     if (!$results){
         header('HTTP/1.0 401 Unauthorized');
     }
     echo $results;
 } else if ($method=='POST' && array_key_exists('Authorization',$headers)){
-    $object = new User($headers['Authorization']);
+    $object = User::getInstance($headers['Authorization']);
     $authParams = new stdClass;
     $authParams->password = $postParams->password;
     $authParams->token = $headers['Authorization'];
@@ -23,7 +23,7 @@ if ($method=='POST' && property_exists($postParams,'password')
     $results = $object->register($postParams,$authParams);
     echo $headers['Authorization'];
 } else {
-    $object = new User($headers['Authorization']);
+    $object = User::getInstance($headers['Authorization']);
     include_once _PROJECT_PATH_.'/backend/controllers/ApiController.php';
     error_log(print_r(json_encode($results),1));
     echo json_encode($results);

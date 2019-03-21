@@ -1,11 +1,11 @@
 <?
-include_once _PROJECT_PATH_.'/backend/models/ControllerCore.class.php';
+include_once _PROJECT_PATH_.'/backend/controllers/ControllerCore.class.php';
 include_once _PROJECT_PATH_.'/backend/controllers/Authorization.class.php';
 class ModelController extends ControllerCore{
 
     public $authorization;
 
-    public function __construct($token){
+    protected function __construct($token){
         $this->authorization = new Authorization($token,$this->tableName);
     }
 

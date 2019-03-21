@@ -4,7 +4,7 @@ include_once _PROJECT_PATH_.'/backend/models/Cart.class.php';
 include_once _PROJECT_PATH_.'/backend/models/Checkout.class.php';
 $method = $_SERVER['REQUEST_METHOD'];
 $headers = apache_request_headers();
-$cart = new Cart($headers['Authorization']);
+$cart = Cart::getInstance($headers['Authorization']);
 if ($cart->authorization->permissions->idAuthorization!=3){
     $data = [
         'idUser' => $cart->authorization->user->id
@@ -20,7 +20,7 @@ if ($cart->authorization->permissions->idAuthorization!=3){
         }
         $results[]=$row;
     }
-    $checkout = new Checkout($headers['Authorization']);
+    $checkout = Checkout::getInstance($headers['Authorization']);
     foreach ($results as $cartProject){
         $response = $checkout->POST((object)$cartProject);
     }
