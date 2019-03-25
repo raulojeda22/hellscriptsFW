@@ -5,15 +5,33 @@ class ControllerCore{
     private function addWhereStatement($array){
         $conditions=count($array);
         $query='';
+        $limit='';
         if ($conditions>=1){
             $query = " WHERE ";
         }
         foreach ($array as $row => $value){
-            $query .= $row." LIKE '".str_replace('!','%',$value)."'";
-            $conditions--;
-            if ($conditions>0){
-                $query .= ' AND ';
+            if ($row=='limit'){
+                $limit = $this->addLimitStatement($value);
+            } else {
+                $query .= $row." LIKE '".str_replace('!','%',$value)."'";
+                $conditions--;
+                if ($conditions>0){
+                    $query .= ' AND ';
+                }
             }
+        }
+        if ($query == " WHERE "){
+            return $limit;
+        }
+        return $query.$limit;
+    }
+
+    private function addLimitStatement($limit){
+        $query='';
+        $values=explode(',',$limit);
+        $query .= ' LIMIT '.$values[0];
+        if (array_key_exists(1,$values)){
+            $query .= ', '.$values[1];
         }
         return $query;
     }
@@ -30,6 +48,7 @@ class ControllerCore{
         if ($data!="" && is_array($data)){
             $query .= $this->addWhereStatement($data);
         }
+        error_log($query);
         return $query;
     }
     protected function buildPostQuery($data){
