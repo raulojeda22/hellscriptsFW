@@ -13,7 +13,7 @@ class ControllerCore{
             if ($row=='limit'){
                 $limit = $this->addLimitStatement($value);
             } else {
-                $query .= $row." LIKE '".str_replace('!','%',$value)."'";
+                $query .= $row." LIKE '".str_replace('!','%',$value)."'"; 
                 $conditions--;
                 if ($conditions>0){
                     $query .= ' AND ';
@@ -70,15 +70,19 @@ class ControllerCore{
         return $query;
     }
     protected function buildPutQuery($data){
+        $count=0;
+        error_log(print_r($data,1));
         if ($data!="" && is_array($data)){
             $query = 'UPDATE '.$this->tableName.' SET ';
             foreach ($data[1] as $row => $value){
-                $query .= $row.'='.$value;
-                if ($value === end($data[1])) $query .= ' ';
+                $count++;
+                $query .= $row."='".utf8_decode($value)."'";
+                if (count($data[1]) == $count) $query .= ' ';
                 else $query .= ', ';
             }
             $query .= $this->addWhereStatement($data[0]);
         }
+        error_log($query);
         return $query;
     }
     protected function buildDeleteQuery($data){
@@ -133,6 +137,7 @@ class ControllerCore{
     }
 
     public static function retrieveTokenByEmailAndPassword($email,$password){
+        error_log($password);
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
         $user = self::runQuery($user)->fetch_object();

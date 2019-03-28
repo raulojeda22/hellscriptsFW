@@ -3,7 +3,7 @@ class FrontController {
 
     public function FrontController(){
         $this->uri=$_SERVER['REQUEST_URI'];
-        if ($_SERVER['HTTP_HOST']=='localhost'){
+        if ($_SERVER['HTTP_HOST']=='localhost'||$_SERVER['HTTP_HOST']=='127.0.0.1'||$_SERVER['HTTP_HOST']=='192.168.22.129'){
             $this->uri=str_replace('/hellscriptsFW/',"",$this->uri);
         } else {
             $this->uri=ltrim($this->uri, '/');

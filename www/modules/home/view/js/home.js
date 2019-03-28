@@ -86,7 +86,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-        url: "www/modules/projects/model/projects.php",  //LOAD PROJECTS
+        url: "www/modules/projects/model/projects.php?limit=5",  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
 			xhr.setRequestHeader ("Authorization", Cookies.get('token'));

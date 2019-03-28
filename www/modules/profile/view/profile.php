@@ -19,7 +19,16 @@
         <h1 class="userProfile"></h1>
     </div>
 </section>
-
+<section class="probootstrap-section">
+    <div class="container">
+        <button class="btn btn-primary" id="updateProfile" >Update Profile</button>
+        <button class="btn btn-primary" id="likes" >Liked projects</button>
+        <button class="btn btn-primary" id="purchases" >Purchased projects</button>
+    </div>
+    <br>
+    <br>
+    <div id="profileOptions" class="container"></div>
+</section>
 <section class="probootstrap-section">
     <div class="container">
         <div class="row">

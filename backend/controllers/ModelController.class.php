@@ -85,7 +85,7 @@ class ModelController extends ControllerCore{
     }
     
     public function PUT($data){
-        if (!$this->checkPrivileges(__FUNCTION__,$data)) return false;
+        //if (!$this->checkPrivileges(__FUNCTION__,$data[0])) return false;
         $query=$this->buildPutQuery($data);
         return $this->runQuery($query);
     }
