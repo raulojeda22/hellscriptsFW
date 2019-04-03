@@ -139,7 +139,7 @@ $(document).ready(function() {
                 var method=$(this).attr('name');
                 object = {id: projectId}
                 $.ajax({
-                    url: "www/modules/projects/model/projects.php?id="+projectId,
+                    url: "api/projects/id-"+projectId,
                     type: method,
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader ("Authorization", Cookies.get('token'));
