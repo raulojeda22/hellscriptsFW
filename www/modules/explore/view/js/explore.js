@@ -5,7 +5,7 @@ $(document).ready(function() {
         success: function(data){
             data=JSON.parse(data);
             $.ajax({
-                url: "www/modules/projects/model/projects.php?license="+data.license+"&languages="+data.languages+"&name="+data.name,
+                url: "api/projects/license-"+data.license+"/languages-"+data.languages+"/name-"+data.name,
                 type: 'GET',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -26,7 +26,7 @@ $(document).ready(function() {
                                     var method=$(this).attr('name');
                                     object = {id: projectId}
                                     $.ajax({
-                                        url: "www/modules/projects/model/projects.php?id="+projectId,
+                                        url: "api/projects/id-"+projectId,
                                         type: method,
                                         async: false,
                                         beforeSend: function (xhr) {

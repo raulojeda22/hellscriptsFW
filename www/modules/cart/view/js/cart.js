@@ -3,7 +3,7 @@ $(document).ready(function(){
     var token=Cookies.get('token');
     var idUser=Cookies.get('idUser');
     $.ajax({
-        url: "www/modules/cart/model/cart.php?idUser="+idUser,  //LOAD PROJECTS
+        url: "api/cart/idUser-"+idUser,  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
             xhr.setRequestHeader ("Authorization", token);
@@ -18,7 +18,7 @@ $(document).ready(function(){
             });
             productArray.forEach(function (element,index) {
                 $.ajax({
-                    url: "www/modules/projects/model/projects.php?id="+index,  //LOAD PROJECTS
+                    url: "api/projects/id-"+index,  //LOAD PROJECTS
                     type: 'GET',
                     async: false,
                     beforeSend: function (xhr) {

@@ -3,7 +3,7 @@ $(document).ready(function() {
     var email=Cookies.get('email');
     var idUser=Cookies.get('idUser');
     $.ajax({
-        url: "www/modules/users/model/users.php?id="+idUser,  //LOAD PROJECTS
+        url: "api/users/id-"+idUser,  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
 			xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -12,11 +12,11 @@ $(document).ready(function() {
             data=JSON.parse(data)[0];
             var params='';
             if (data.idAuthorization==1){
-                params='?idUser='+data.id;
+                params='/idUser-'+data.id;
                 $("#resetApp").hide();
             }
             $.ajax({
-                url: "www/modules/projects/model/projects.php"+params,  //LOAD PROJECTS
+                url: "api/projects"+params,  //LOAD PROJECTS
                 type: 'GET',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -43,7 +43,7 @@ $(document).ready(function() {
                         var method=$(this).attr('name');
                         object = {id: projectId}
                         $.ajax({
-                            url: "www/modules/projects/model/projects.php?id="+projectId,
+                            url: "api/projects/id-"+projectId,
                             type: method,
                             beforeSend: function (xhr) {
                                 xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -120,7 +120,7 @@ $(document).ready(function() {
                     object = Object.assign({idUser: Cookies.get('idUser')},object);
                     if (!emptyValue){
                         $.ajax({
-                            url: 'www/modules/projects/model/projects.php',
+                            url: 'api/projects',
                             type: 'POST',
                             data: {data: JSON.stringify(object)},
                             beforeSend: function (xhr) {
@@ -157,7 +157,7 @@ $(document).ready(function() {
             });   
             $("#deleteAllProjects").click(function(){  //SHOW PROJECT FORM
                 $.ajax({
-                    url: "www/modules/projects/model/projects.php",
+                    url: "api/projects",
                     type: 'DELETE',
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader ("Authorization", Cookies.get('token'));

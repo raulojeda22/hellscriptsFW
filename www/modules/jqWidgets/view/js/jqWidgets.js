@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "www/modules/projects/model/projects.php",  //LOAD PROJECTS
+        url: "api/projects",  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
 			xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -21,7 +21,7 @@ $(document).ready(function() {
                 dataColumnsArray.push({ text: key, dataField: key});
             });
             $('#allTableProjects').DataTable(); //Change table styles
-            var url = "www/modules/projects/model/projecasdfadsfts.php"; 
+            var url = "api/projects"; 
             var source =
             {
                 dataType: 'array',

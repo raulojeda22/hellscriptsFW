@@ -19,14 +19,14 @@ $(document).ready(function(){
         });
         if (!emptyValue){
             $.ajax({
-                url: 'www/modules/users/model/users.php',
+                url: 'api/users',
                 type: 'POST',
                 data: {data: JSON.stringify(object)},
                 success: function(data){
                     Cookies.set('token', data);
                     Cookies.set('email', email);
                     $.ajax({
-                        url: "www/modules/users/model/users.php?email="+email,
+                        url: "api/users/email-"+email,
                         type: 'GET',
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader ("Authorization", data);
@@ -96,7 +96,7 @@ $(document).ready(function(){
                 token = token.concat(newToken);
             }
             $.ajax({
-                url: 'www/modules/users/model/users.php',
+                url: 'api/users',
                 type: 'POST',
                 data: {data: JSON.stringify(object)},
                 beforeSend: function (xhr) {
@@ -106,7 +106,7 @@ $(document).ready(function(){
                     Cookies.set('token', data);
                     Cookies.set('email', email);
                     $.ajax({
-                        url: "www/modules/users/model/users.php?email="+email,
+                        url: "api/users/email-"+email,
                         type: 'GET',
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader ("Authorization", token);

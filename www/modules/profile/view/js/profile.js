@@ -3,7 +3,7 @@ $(document).ready(function() {
     var email=Cookies.get('email');
     var idUser=Cookies.get('idUser');  
     $.ajax({
-        url: "www/modules/users/model/users.php?id="+idUser,  //LOAD PROJECTS
+        url: "api/users/id-"+idUser,  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
 			xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -44,7 +44,7 @@ $(document).ready(function() {
                         if (!emptyValue){
                             console.log(object);
                             $.ajax({
-                                url: "www/modules/users/model/users.php",  
+                                url: "api/users",  
                                 type: 'PUT',
                                 data: { data: [{id: idUser}, JSON.stringify(object)]},
                                 beforeSend: function (xhr) {
@@ -58,7 +58,7 @@ $(document).ready(function() {
                             });
                             /*            
                             $.ajax({
-                                url: 'www/modules/users/model/users.php',
+                                url: 'api/users',
                                 type: 'POST',
                                 data: {data: JSON.stringify(object)},
                                 beforeSend: function (xhr) {
@@ -68,7 +68,7 @@ $(document).ready(function() {
                                     Cookies.set('token', data);
                                     Cookies.set('email', email);
                                     $.ajax({
-                                        url: "www/modules/users/model/users.php?email="+email,
+                                        url: "api/users/email-"+email,
                                         type: 'GET',
                                         beforeSend: function (xhr) {
                                             xhr.setRequestHeader ("Authorization", token);
@@ -115,7 +115,7 @@ $(document).ready(function() {
             $('.nameProfile').html(data.name);
             $('.imageProfile').attr('src','https://api.adorable.io/avatars/500/'+data.email);
             $.ajax({
-                url: "www/modules/projects/model/projects.php?idUser="+data.id,  //LOAD PROJECTS
+                url: "api/projects/idUser-"+data.id,  //LOAD PROJECTS
                 type: 'GET',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader ("Authorization", Cookies.get('token'));

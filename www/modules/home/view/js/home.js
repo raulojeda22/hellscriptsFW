@@ -36,7 +36,7 @@ $(document).ready(function() {
             name='!!';
         }
         $.ajax({
-            url: "www/modules/projects/model/projects.php?license="+license+"&languages="+languages+"&name="+name,
+            url: "api/projects/license-"+license+"/languages-"+languages+"/name-"+name,
             type: 'GET',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader ("Authorization", Cookies.get('token'));
@@ -86,7 +86,7 @@ $(document).ready(function() {
         }
     });
     $.ajax({
-        url: "www/modules/projects/model/projects.php?limit=5",  //LOAD PROJECTS
+        url: "api/projects/limit-5",  //LOAD PROJECTS
         type: 'GET',
         beforeSend: function (xhr) {
 			xhr.setRequestHeader ("Authorization", Cookies.get('token'));

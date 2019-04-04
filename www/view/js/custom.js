@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
 	
 	if (token!=''){
 		$.ajax({
-			url: "www/modules/users/model/users.php?id="+idUser,
+			url: "api/users/id-"+idUser,
 			type: 'GET',
 			beforeSend: function (xhr) {
 				xhr.setRequestHeader ("Authorization", token);

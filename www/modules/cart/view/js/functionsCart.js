@@ -20,7 +20,7 @@ $(document).ready(function(){
             object = Object.assign({idUser: idUser},object);
             object = Object.assign({idProject: idProject},object);
             $.ajax({
-                url: 'www/modules/cart/model/cart.php',
+                url: 'api/cart',
                 type: 'POST',
                 data: { data: JSON.stringify(object)},
                 beforeSend: function (xhr) {
@@ -28,7 +28,7 @@ $(document).ready(function(){
                 },
                 success: function (data){
                     $.ajax({
-                        url: 'www/modules/cart/model/cart.php?idUser='+idUser+'&idProject='+idProject,
+                        url: 'api/cart/idUser-'+idUser+'/idProject-'+idProject,
                         type: 'GET',
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader ("Authorization", token);
@@ -54,7 +54,7 @@ $(document).ready(function(){
             idProject=$(this).attr('data-id');
             if (productArray[idProject][0] != undefined){
                 $.ajax({
-                    url: 'www/modules/cart/model/cart.php?idUser='+idUser+'&id='+productArray[idProject][0],
+                    url: 'api/cart/idUser-'+idUser+'/id-'+productArray[idProject][0],
                     type: 'DELETE',
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader ("Authorization", token);
@@ -74,7 +74,7 @@ $(document).ready(function(){
         $('.projectDelete').click(function(){
             idProject=$(this).attr('data-id');
             $.ajax({
-                url: 'www/modules/cart/model/cart.php?idUser='+idUser+'&idProject='+idProject,
+                url: 'api/cart/idUser-'+idUser+'/idProject-'+idProject,
                 type: 'DELETE',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader ("Authorization", token);
@@ -91,7 +91,7 @@ $(document).ready(function(){
         });
         $('#checkoutCart').click(function(){
             $.ajax({
-                url: 'www/modules/cart/model/cartCheckout.php',
+                url: 'api/checkout',
                 type: 'POST',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader ("Authorization", token);
