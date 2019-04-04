@@ -10,28 +10,13 @@ class FrontController {
         }
     }
 
-    private function getAllowedPages(){
-        $allowedPages=array(
-            'home',
-            'projects',
-            'jqWidgets',
-            'developers',
-            'groups',
-            'profile',
-            'contact',
-            'explore',
-            'users',
-            'cart'
-        );
-        return $allowedPages;
-    }
-
     public function run(){
         $this->uri=rtrim($this->uri, '/');
         $cutUrl=explode('/',$this->uri);
-        $allowedPages=$this->getAllowedPages();
+        $allowedPages=yaml_parse_file(dirname(__FILE__).'/../includes/resources/pages.yml');
+        $allowedResources=yaml_parse_file(dirname(__FILE__).'/../includes/resources/resources.yml');
         if ($cutUrl[0]=='api') {
-            if (in_array($cutUrl[1],$allowedPages)){
+            if (in_array($cutUrl[1],$allowedResources)){
                 $getParams=array_slice($cutUrl,2);
                 foreach ($getParams as $getParam){
                     $params = explode('-',$getParam);

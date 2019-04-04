@@ -1,6 +1,4 @@
 <?
-include_once _PROJECT_PATH_.'/backend/controllers/ControllerCore.class.php';
-include_once _PROJECT_PATH_.'/backend/controllers/Authorization.class.php';
 class ModelController extends ControllerCore{
 
     public $authorization;

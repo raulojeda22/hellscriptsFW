@@ -1,5 +1,4 @@
 <?
-include_once _PROJECT_PATH_.'/backend/controllers/ModelController.class.php';
 class Cart extends ModelController{
     protected $tableName='cart';
     private static $instance;
