@@ -1,4 +1,4 @@
-var productArray = [];;
+var productArray = [];
 $(document).ready(function(){
     var token=Cookies.get('token');
     var idUser=Cookies.get('idUser');

@@ -12,6 +12,8 @@ class ControllerCore{
         foreach ($array as $row => $value){
             if ($row=='limit'){
                 $limit = $this->addLimitStatement($value);
+            } else if ($row=='count'){
+                $query = $this->addCountStatement($query);
             } else {
                 $query .= $row." LIKE '".str_replace('!','%',$value)."'"; 
                 $conditions--;
@@ -33,6 +35,11 @@ class ControllerCore{
         if (array_key_exists(1,$values)){
             $query .= ', '.$values[1];
         }
+        return $query;
+    }
+
+    private function addCountStatement($query){
+        // change * to count(*)
         return $query;
     }
 
@@ -137,7 +144,6 @@ class ControllerCore{
     }
 
     public static function retrieveTokenByEmailAndPassword($email,$password){
-        error_log($password);
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
         $user = self::runQuery($user)->fetch_object();
@@ -145,6 +151,14 @@ class ControllerCore{
         $authentication .= self::addWhereStatement(array("secret" => $user->id));
         $authentication = self::runQuery($authentication)->fetch_object();
         if (password_verify($password,$authentication->password)){
+            $updateToken = 'UPDATE authentication set token=\''.md5(microtime(true).mt_Rand()).'\'';
+            $updateToken .= self::addWhereStatement(array("secret" => $user->id));
+            $updateToken = self::runQuery($updateToken);
+            if ($updateToken){
+                $authentication = 'SELECT * FROM authentication';
+                $authentication .= self::addWhereStatement(array("secret" => $user->id));
+                $authentication = self::runQuery($authentication)->fetch_object();
+            }
             return $authentication->token;
         } else {
             return false;

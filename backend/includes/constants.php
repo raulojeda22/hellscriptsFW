@@ -18,6 +18,8 @@ if ($_SERVER['HTTP_HOST']=='localhost'||$_SERVER['HTTP_HOST']=='127.0.0.1'||$_SE
     define('_PROJECT_PATH_',dirname(__FILE__).'/../..'); 
 }
 define('_GOOGLE_API_KEY_',file_get_contents(_PROJECT_PATH_.'/google_api_key.txt'));
+define('_MAIL_GUN_API_KEY_',file_get_contents(_PROJECT_PATH_.'/mail_gun_api_key.txt'));
+define('_MAIL_GUN_API_URL_',file_get_contents(_PROJECT_PATH_.'/mail_gun_api_url.txt'));
 exec('ls');
 
 ?>

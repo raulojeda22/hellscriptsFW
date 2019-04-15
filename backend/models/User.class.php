@@ -14,6 +14,7 @@ class User extends ModelController{
         return ControllerCore::retrieveTokenByEmailAndPassword($email,$password);
     }
     public function register($userParams,$authParams){
+        $authParams->token=md5(microtime(true).mt_Rand());
         return $this->postNewUser($userParams,$authParams);
     }
 }
