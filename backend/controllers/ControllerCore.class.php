@@ -137,6 +137,8 @@ class ControllerCore{
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
         $user = self::runQuery($user)->fetch_object();
+        error_log(print_r($user,1));
+        error_log(print_r($email,1));        
         $authentication = 'SELECT * FROM authentication';
         $authentication .= self::addWhereStatement(array("secret" => $user->id));
         $authentication = self::runQuery($authentication)->fetch_object();

@@ -22,6 +22,7 @@
 <script type="text/javascript" src="<? echo _PROJECT_URL_; ?>/view/js/jqwidgets/jqxpanel.js"></script>
 <script type="text/javascript" src="<? echo _PROJECT_URL_; ?>/view/js/jqwidgets/jqxradiobutton.js"></script>
 <script type="text/javascript" src="<? echo _PROJECT_URL_; ?>/view/js/jqwidgets/jqxinput.js"></script>
+<script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
 
 
 

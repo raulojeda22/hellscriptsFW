@@ -32,6 +32,9 @@
               <input type="button" class="btn btn-primary" id="loginSubmit" name="submit" value="Login">
             </div>
           </form>
+          <div class="form-group">
+            <input type="button" class="btn btn-success" id="socialLogin" name="submit" value="Social Login">
+          </div>
         </div>
         <div class="col-md-6">
           <h2>Register</h2>
@@ -67,8 +70,12 @@
               <input type="button" class="btn btn-primary" id="registerSubmit" name="submit" value="Register">
             </div>
           </form>
+          <div class="form-group">
+            <input type="button" class="btn btn-success" id="socialRegister" name="submit" value="Social Register">
+          </div>
         </div>
       </div>
     </div>
   </section>  
 <script src="<? echo _PROJECT_URL_ ?>/modules/users/view/js/users.js?jsVersion=<? echo _JS_VERSION_ ?>"></script>
+<script src="<? echo _PROJECT_URL_ ?>/modules/users/view/js/auth0.js?jsVersion=<? echo _JS_VERSION_ ?>"></script>

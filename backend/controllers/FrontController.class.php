@@ -13,8 +13,8 @@ class FrontController {
     public function run(){
         $this->uri=rtrim($this->uri, '/');
         $cutUrl=explode('/',$this->uri);
-        $allowedPages=yaml_parse_file(dirname(__FILE__).'/../includes/resources/pages.yml');
-        $allowedResources=yaml_parse_file(dirname(__FILE__).'/../includes/resources/resources.yml');
+        $allowedPages=json_decode(file_get_contents(dirname(__FILE__).'/../includes/resources/pages.json'));
+        $allowedResources=json_decode(file_get_contents(dirname(__FILE__).'/../includes/resources/resources.json'));
         if ($cutUrl[0]=='api') {
             if (in_array($cutUrl[1],$allowedResources)){
                 $getParams=array_slice($cutUrl,2);
