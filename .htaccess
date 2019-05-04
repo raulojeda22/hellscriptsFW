@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ www/index.php
+RewriteRule ^api/(.*)$ www/index.php
 Options +FollowSymLinks -MultiViews

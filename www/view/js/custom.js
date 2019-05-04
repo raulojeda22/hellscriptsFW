@@ -4,8 +4,9 @@ jQuery(document).ready(function() {
 	var idUser = Cookies.get('idUser');
 	
 	if (token!=''){
+		/* Esto no deuria estar comentat
 		$.ajax({
-			url: "api/users/id-"+idUser,
+			url: "/hellscriptsFW/api/users/id-"+idUser,
 			type: 'GET',
 			beforeSend: function (xhr) {
 				xhr.setRequestHeader ("Authorization", token);
@@ -26,5 +27,6 @@ jQuery(document).ready(function() {
 				console.log(data);
 			}
 		});
+		*/
 	}
 });

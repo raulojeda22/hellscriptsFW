@@ -1,0 +1,77 @@
+<html ng-app="hellscripts" >
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hell Scripts FW</title>
+        <meta name="description" content="Share and learn programming knowledge, communicate with other developers and help create big projects.">
+        <meta name="keywords" content="code, programming, learn, share, knowledge, developers, join, help, build, contributions, community, project, projects, create, own, start">
+        <meta name="author" content="Raül Ojeda">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"/>
+        <link rel="stylesheet" href="www/view/css/jqx.base.css" type="text/css" />
+        <link rel="stylesheet" href="www/view/css/jqx.metrodark.css" type="text/css" />
+        <link rel="stylesheet" href="www/view/css/styles-merged.css"/>
+        <link rel="stylesheet" href="www/view/css/style.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="www/view/css/custom.css"/>
+        <link rel="icon" href="favicon.ico" type="image/png" sizes="16x16"> 
+    </head>
+    <body>
+        <div ng-include='"www/view/templates/header.view.html"'></div>        
+        <div class="probootstrap-loader">
+        </div>
+
+        <div ng-include='"www/view/templates/slider.view.html"'></div>
+
+
+
+        <section class="probootstrap-section">
+            <div id="pageContent" class="container" ng-view></div>
+        </section>
+
+        
+        <div ng-include='"www/view/templates/footer.view.html"'></div>
+        
+        <div class="gototop js-top">
+            <a href="#" class="js-gotop"><i class="icon-chevron-thin-up"></i></a>
+        </div>
+        
+        <!-- CORE (Always on top)-->
+        <script src="www/view/js/scripts.min.js"></script>
+        <script src="www/view/js/main.js"></script>
+        <script src="www/view/js/custom.js"></script>
+        <script src="www/view/js/translator.js"></script>
+
+
+
+        <!-- EXTERNAL -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxcore.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxdata.js"></script> 
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxbuttons.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxscrollbar.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxlistbox.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxdropdownlist.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxdatatable.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxpanel.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxradiobutton.js"></script>
+        <script type="text/javascript" src="www/view/js/jqwidgets/jqxinput.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0/9.10/auth0.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+
+        <!-- INTERNAL -->
+        <script src="www/view/js/datePicker.js"></script>
+        <script src="www/view/js/app.js"></script>
+
+        <script src="www/modules/contact/controller/contactController.js"></script>
+        <script src="www/view/js/mainController.js"></script>
+        <script src="www/view/js/apiController.js"></script>
+    </body>
+</html>

@@ -27,20 +27,7 @@ class FrontController {
                 header('HTTP/1.0 404 Not found');
             }
         } else {
-            include_once dirname(__FILE__).'/../includes/templates/start.php';
-            include_once dirname(__FILE__).'/../includes/templates/head.php';
-            include_once dirname(__FILE__).'/../includes/templates/corejs.php';
-            include_once dirname(__FILE__).'/../includes/templates/header.php';
-            error_log($this->uri);
-            if (in_array($this->uri,$allowedPages)){
-                include_once 'modules/'.$this->uri.'/view/'.$this->uri.".php";
-            } else if ($this->uri==""||$this->uri=="/"){
-                include_once "modules/home/view/home.php";
-            } else {
-                include_once "404.php";
-            }
-            include_once dirname(__FILE__).'/../includes/templates/footer.php';
-            include_once dirname(__FILE__).'/../includes/templates/end.php';
+            include_once "404.php";
         }
     }
 }

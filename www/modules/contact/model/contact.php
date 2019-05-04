@@ -1,4 +1,6 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST))
+    $_POST = json_decode(file_get_contents('php://input'), true);
 $data=json_decode($_POST['data']);
 if (filter_var($data->email,FILTER_VALIDATE_EMAIL)) {
     $config = array();

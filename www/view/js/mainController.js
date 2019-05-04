@@ -1,0 +1,2 @@
+hellscripts.controller('mainCtrl', function () {
+});

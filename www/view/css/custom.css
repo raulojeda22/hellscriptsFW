@@ -142,7 +142,8 @@ div.dataTables_wrapper div.dataTables_length select {
 }
 
 .flexslider, .flexslider .slides > li, .flexslider2, .flexslider2 .slides > li, .slider-height {
-  height: 250px !important;
+  background-color: #000;
+  height: 90px !important;
   border: 1;
 }
 
