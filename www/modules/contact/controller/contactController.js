@@ -7,7 +7,6 @@ hellscripts.controller('contactCtrl', function ($scope, services) {
     };
 
     $scope.SubmitContact = function () {
-        console.log($scope);
         var object = {};
         Object.keys($scope.contact).forEach(function(key) {
             object = Object.assign({[key]: $scope.contact[key]},object);
@@ -15,6 +14,5 @@ hellscripts.controller('contactCtrl', function ($scope, services) {
         services.post('contact', object).then(function (response) {
             window.location.href = '';
         });
-        
     };
 });

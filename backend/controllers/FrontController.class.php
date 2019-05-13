@@ -22,6 +22,8 @@ class FrontController {
                     $params = explode('-',$getParam);
                     $_GET[$params[0]]=$params[1];
                 }
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'PUT' && empty($_POST))
+                    $_POST = json_decode(file_get_contents('php://input'), true);
                 include_once _PROJECT_PATH_.'/www/modules/'.$cutUrl[1].'/model/'.$cutUrl[1].'.php';
             } else {
                 header('HTTP/1.0 404 Not found');

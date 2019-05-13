@@ -1,0 +1,25 @@
+<div class="col-md-12 section-heading">
+    <h2>The Projects</h2>
+</div>
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="probootstrap-form">
+                    <input ng-change="selectSearch(this)" typeahead-on-select="selectSearch(this)" list="suggestionsName" ng-model="projectSelected" type="text" class="form-control typeahead border-primary"
+                        uib-typeahead="project as project.name for project in projects | filter:{name:$viewValue} |  limitTo:5"
+                        uib-typeahead-min-length='1' name="nameSearch" id="nameSearch" placeholder="Search by name..." autocomplete="off">
+                </form>
+            </div>
+        </div>
+        <div class="row" id="allHomeProjects" >
+            <div class="alignColumn col-lg-2 col-md-3 col-sm-4" ng-repeat="project in filterProjects">
+                <div ng-include="'www/modules/projects/view/project.view.html'" ></div>
+            </div>
+        </div>
+        <div id="pager" >
+            <uib-pagination class="pagination-sm pagination" total-items="projects.length" ng-model="currentPage"
+            ng-change="pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page=12></uib-pagination>        
+        </div>
+    </div>
+</section>
