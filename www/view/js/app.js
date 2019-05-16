@@ -23,6 +23,9 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
         }
     })
 
+    .when("/users", {
+        templateUrl: "www/modules/users/view/login.view.html",controller: "loginCtrl"})
+
     // Contact
     .when("/contact", {templateUrl: "www/modules/contact/view/contact.view.html", controller: "contactCtrl"})
 

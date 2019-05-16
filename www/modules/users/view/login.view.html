@@ -1,0 +1,85 @@
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Login</h2>
+                <div class="loginError"></div>
+                <form id="login_form" name="login_form" class="probootstrap-form mb60">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input required type="email" class="form-control loginFormElement" id="emailLogin" name="email" ng-model="login.email" />
+                        <span class="text-danger" ng-show="login_form.email.$error.required && (login_form.email.$dirty || login_form.email.$touched)">Input an email</span>
+                        <span class="text-danger" ng-show="login_form.email.$error.email">Invalid email</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input required type="password" class="form-control loginFormElement" id="passwordLogin" name="password" ng-model="login.password" ng-minlength="6" ng-maxlength="40"/>
+                        <span class="text-danger" ng-show="login_form.password.$error.required && (login_form.password.$dirty || login_form.password.$touched)">Input your password</span>
+	       				<span class="text-danger" ng-show="login_form.password.$error.minlength">Input 6 characters or more</span>
+	       				<span class="text-danger" ng-show="login_form.password.$error.maxlength">Input less than 40 characters</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-primary" id="loginSubmit" name="submit" value="Login" ng-show="login_form.email.$valid && login_form.password.$valid" ng-click="submitLogin()">
+                    </div>
+                </form>
+                <div class="form-group">
+                    <input type="button" class="btn btn-success" id="socialLogin" name="submit" value="Social Login"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Register</h2>
+                <div class="registerError"></div>
+                <form id="register_form" name="register_form" class="probootstrap-form mb60">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="username">username*</label>
+                                <input required type="text" class="form-control registerFormElement" id="usernameRegister" name="username" ng-model="register.username" ng-minlength="3" ng-maxlength="20">
+                                <span class="text-danger" ng-show="register_form.username.$error.required && (register_form.username.$dirty || register_form.username.$touched)">Input a username</span>
+                                <span class="text-danger" ng-show="register_form.username.$error.minlength">Input more than 3 characters</span>
+                                <span class="text-danger" ng-show="register_form.username.$error.maxlength">Input more than 20 characters</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name*</label>
+                                <input required type="text" class="form-control registerFormElement" id="nameRegister" name="name" ng-model="register.name" ng-minlength="3" ng-maxlength="20">
+                                <span class="text-danger" ng-show="register_form.name.$error.required && (register_form.name.$dirty || register_form.name.$touched)">Input a name</span>
+                                <span class="text-danger" ng-show="register_form.name.$error.minlength">Input more than 3 characters</span>
+                                <span class="text-danger" ng-show="register_form.name.$error.maxlength">Input more than 20 characters</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input required type="email" class="form-control registerFormElement" id="emailRegister" name="email" ng-model="register.email">
+                        <span class="text-danger" ng-show="register_form.email.$error.required && (register_form.email.$dirty || register_form.email.$touched)">Input an email</span>
+                		<span class="text-danger" ng-show="register_form.email.$error.email">Invalid email</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password*</label>
+                        <input required type="password" class="form-control registerFormElement" id="passwordRegister" name="password" ng-model="register.password" ng-minlength="6" ng-maxlength="40"/>
+                        <span class="text-danger" ng-show="register_form.password.$error.required && (register_form.password.$dirty || register_form.password.$touched)">Input a password</span>
+	       				<span class="text-danger" ng-show="register_form.password.$error.minlength">Input more than 6 characters</span>
+	       				<span class="text-danger" ng-show="register_form.password.$error.maxlength">Input more than 40 characters</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="repeatPassword">Repeat Password*</label>
+                        <input required type="password" class="form-control registerFormElement" id="repeatPasswordRegister" name="repeatPassword" ng-model="register.repeatPassword" ng-minlenght="6" ng-maxlength="40"/>
+                        <span class="text-danger" ng-show="register_form.repeatPassword.$error.required && (register_form.repeatPassword.$dirty || register_form.repeatPassword.$touched)">Repeat the password</span>
+	       				<span class="text-danger" ng-show="register_form.repeatPassword.$error.minlength">Input more than 6 characters</span>
+                        <span class="text-danger" ng-show="register_form.repeatPassword.$error.maxlength">Input more than 40 characters</span>
+                        <span class="text-danger" ng-show="register.repeatPassword != register.password && (register_form.repeatPassword.$dirty || register_form.repeatPassword.$touched)">The passwords don't match</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-primary" id="registerSubmit" name="submit" value="Register" ng-show="register_form.username.$valid && register_form.name.$valid && register_form.email.$valid && register_form.password.$valid && register_form.repeatPassword.$valid && register.repeatPassword === register.password"
+                        ng-click="submitRegister()"/>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <input type="button" class="btn btn-success" id="socialRegister" name="submit" value="Social Register">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

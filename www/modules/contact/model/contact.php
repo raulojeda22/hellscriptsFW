@@ -2,8 +2,8 @@
 $data=json_decode($_POST['data']);
 if (filter_var($data->email,FILTER_VALIDATE_EMAIL)) {
     $config = array();
-    $config['api_key'] = _MAIL_GUN_API_KEY_; //API Key
-    $config['api_url'] = _MAIL_GUN_API_URL_; //API Base URL
+    $config['api_key'] = file_get_contents(dirname(__FILE__).'/../../../../mail_gun_api_key.txt'); //API Key
+    $config['api_url'] = file_get_contents(dirname(__FILE__).'/../../../../mail_gun_api_url.txt'); //API Base URL
 
     $message = array();
     $message['from'] = "raulojeda10g@gmail.com";
@@ -23,6 +23,8 @@ if (filter_var($data->email,FILTER_VALIDATE_EMAIL)) {
     curl_setopt($ch, CURLOPT_POST, true); 
     curl_setopt($ch, CURLOPT_POSTFIELDS,$message);
     $result = curl_exec($ch);
-    curl_close($ch);
     return $result;
+} else {
+    header('HTTP/1.0 403 Forbidden');
+    return false;
 }

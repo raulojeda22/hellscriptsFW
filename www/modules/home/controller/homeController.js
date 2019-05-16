@@ -10,9 +10,7 @@ hellscripts.controller('homeCtrl', function ($scope, services, projects) {
 	};
 
 	$scope.selectSearch = function(input){
-		console.log(input.projectSelected);
 		if (typeof input.projectSelected === 'object' && input.projectSelected !== null){
-			console.log('perro');
 			window.location.href='#/explore/'+input.projectSelected.id;
 		} else {
 			selectedProjects=[];

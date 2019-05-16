@@ -21,7 +21,7 @@ if ($method=='POST' && property_exists($postParams,'password')
     $authParams->token = $headers['Authorization'];
     unset($postParams->password);
     $results = $object->register($postParams,$authParams);
-    echo $headers['Authorization'];
+    echo $results;
 } else {
     $object = User::getInstance($headers['Authorization']);
     include_once _PROJECT_PATH_.'/backend/controllers/ApiController.php';
