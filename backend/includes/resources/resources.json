@@ -3,5 +3,7 @@
 	"projects",
 	"users",
 	"checkout",
-	"contact"
+	"contact",
+	"auth0",
+	"auth0callback"
 ]

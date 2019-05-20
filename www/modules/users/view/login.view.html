@@ -19,11 +19,11 @@
 	       				<span class="text-danger" ng-show="login_form.password.$error.maxlength">Input less than 40 characters</span>
                     </div>
                     <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="loginSubmit" name="submit" value="Login" ng-show="login_form.email.$valid && login_form.password.$valid" ng-click="submitLogin()">
+                        <input type="button" class="btn btn-primary btn-lg btn-login btn-block" id="loginSubmit" name="submit" value="Login" ng-show="login_form.email.$valid && login_form.password.$valid" ng-click="submitLogin()">
                     </div>
                 </form>
                 <div class="form-group">
-                    <input type="button" class="btn btn-success" id="socialLogin" name="submit" value="Social Login"/>
+                    <a class="btn btn-info btn-lg btn-login btn-block" href="api/auth0">Social LogIn</a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -72,12 +72,12 @@
                         <span class="text-danger" ng-show="register.repeatPassword != register.password && (register_form.repeatPassword.$dirty || register_form.repeatPassword.$touched)">The passwords don't match</span>
                     </div>
                     <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="registerSubmit" name="submit" value="Register" ng-show="register_form.username.$valid && register_form.name.$valid && register_form.email.$valid && register_form.password.$valid && register_form.repeatPassword.$valid && register.repeatPassword === register.password"
+                        <input type="button" class="btn btn-primary btn-lg btn-login btn-block" id="registerSubmit" name="submit" value="Register" ng-show="register_form.username.$valid && register_form.name.$valid && register_form.email.$valid && register_form.password.$valid && register_form.repeatPassword.$valid && register.repeatPassword === register.password"
                         ng-click="submitRegister()"/>
                     </div>
                 </form>
                 <div class="form-group">
-                    <input type="button" class="btn btn-success" id="socialRegister" name="submit" value="Social Register">
+                    <a class="btn btn-info btn-lg btn-login btn-block" href="api/auth0">Social SignIn</a>
                 </div>
             </div>
         </div>
