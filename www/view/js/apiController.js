@@ -74,6 +74,8 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
    };
 
    obj.delete = function (module, get) {
+      console.log(module);
+      console.log(get);
       var defered=$q.defer();
       var promise=defered.promise;
       var query='';

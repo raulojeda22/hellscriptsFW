@@ -3,6 +3,7 @@
 include_once dirname(__FILE__).'/../../../../vendor/autoload.php';
 
 use Auth0\SDK\Auth0;
+use Auth0\SDK\API\Authentication;
 
 $auth0 = new Auth0([
   'domain' => 'raulojeda.eu.auth0.com',
@@ -17,6 +18,15 @@ $auth0 = new Auth0([
   'persist_refresh_token' => true,
 ]);
 
-
-
-$auth0->login();
+if ($_SERVER['REQUEST_METHOD']=='GET'){
+  $auth0->login();
+} else if ($_SERVER['REQUEST_METHOD']=='DELETE'){
+  $auth0->logout();
+  session_destroy();
+  $auth0_auth_api = new Authentication('raulojeda.eu.auth0.com');
+  $auth0_logout_url = $auth0_auth_api->get_logout_link(
+    'http://localhost/hellscriptsFW',
+    '0qDeBksiQ6DMDWfISnE5cyvuTp4Ftynz'
+  );
+  echo $auth0_logout_url;
+}

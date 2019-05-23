@@ -29,7 +29,8 @@ hellscripts.controller('homeCtrl', function ($scope, services, projects) {
 hellscripts.controller('menuCtrl', function($scope,services,$cookies,$window,loginService) {
 	$scope.logout = function(){
 		loginService.logout();
-        $window.location.href = '#/';
-        $window.location.reload();
+		services.delete('auth0',{}).then(function(response){
+			$window.location.href = response;
+		});
 	}
 });
