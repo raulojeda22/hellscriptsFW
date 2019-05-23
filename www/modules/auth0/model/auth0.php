@@ -17,4 +17,6 @@ $auth0 = new Auth0([
   'persist_refresh_token' => true,
 ]);
 
+
+
 $auth0->login();

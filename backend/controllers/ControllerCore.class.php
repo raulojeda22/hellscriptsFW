@@ -136,9 +136,7 @@ class ControllerCore{
     public static function getAuthenticationByEmail($email){
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
-        $user = self::runQuery($user)->fetch_object();
-        error_log(print_r($user,1));
-        error_log(print_r($email,1));        
+        $user = self::runQuery($user)->fetch_object();     
         $authentication = 'SELECT * FROM authentication';
         $authentication .= self::addWhereStatement(array("secret" => $user->id));
         $authentication = self::runQuery($authentication)->fetch_object();
@@ -184,5 +182,20 @@ class ControllerCore{
             }
         }
         return false;   
+    }
+    public static function activateUser($token){
+        $authentication = 'SELECT * FROM authentication';
+        $authentication .= self::addWhereStatement(array("token" => $token));
+        $authentication = self::runQuery($authentication)->fetch_object();
+        $user = 'UPDATE users set activated=1';
+        $user .= self::addWhereStatement(array("id" => $authentication->secret));
+        $user = self::runQuery($user);
+        if ($user){
+            $user = 'SELECT * FROM users';
+            $user .= self::addWhereStatement(array("id" => $authentication->secret));
+            return self::runQuery($user)->fetch_object();
+        } else {
+            return $user;
+        }
     }
 }

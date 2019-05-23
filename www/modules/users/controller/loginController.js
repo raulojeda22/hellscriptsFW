@@ -1,6 +1,7 @@
-hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope,$cookies) {
+hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope,$cookies,$window,loginService) {
 
 	$scope.submitLogin = function(){
+		loginService.logout();
 		var object = {};
 		for (name in $scope.login){
 			object = Object.assign({[name]: $scope.login[name]},object);
@@ -10,12 +11,14 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 			$cookies.put('email', object.email);
 			services.get('users',{email: object.email}).then(function (response) {
 				Cookies.set('idUser',response[0].id);
-				window.location.href = '#/'
+				$window.location.href = '#/';
+				$window.location.reload();
 			});
 		});
 	};
 
 	$scope.submitRegister = function(){
+		loginService.logout();
 		var object = {};
 		for (name in $scope.register){
 			if (name!='repeatPassword'){
@@ -29,14 +32,13 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 			token = token.concat(newToken);
 		}
 		$cookies.put('token',token);
-		console.log(token);
 		services.post('users',object).then(function (response) {
-			console.log(response);
 			$cookies.put('token',response);
 			$cookies.put('email', object.email);
 			services.get('users',{email: object.email}).then(function (response) {
 				Cookies.set('idUser',response[0].id);
-				window.location.href = '#/'
+				$window.location.href = '#/';
+				$window.location.reload();
 			});
 		});
 	}

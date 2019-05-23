@@ -12,6 +12,7 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
         }
     })
 
+    // Explore
     .when("/explore/:id", {
         templateUrl: "www/modules/projects/view/details.view.html",
         controller: "detailsProjectCtrl",
@@ -31,4 +32,17 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
 
     // else 404
     .otherwise("/", {templateUrl: "www/view/templates/404.view.html", controller: "404Ctrl"});
-}]);
+}]).run(function(services,$cookies,$rootScope,$window){
+    $rootScope.loggedIn=false;
+    object={id:$cookies.get('idUser')};
+    services.get('users',object).then(function(response){
+        console.log(response);
+        $rootScope.user=response[0];
+        if ($rootScope.user!=null){
+            $rootScope.loggedIn=true;
+            if ($rootScope.user.avatar==''){
+                $rootScope.user.avatar='https://api.adorable.io/avatars/40/'+$rootScope.user.email;
+            }
+        }
+    });
+});

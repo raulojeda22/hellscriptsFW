@@ -1,6 +1,6 @@
 hellscripts.controller('homeCtrl', function ($scope, services, projects) {
 	$scope.originalProjects = projects;
-  $scope.projects = projects;
+  	$scope.projects = projects;
 	$scope.currentPage = 1;
 	$scope.filterProjects = $scope.projects.slice(0,12);
 
@@ -23,5 +23,13 @@ hellscripts.controller('homeCtrl', function ($scope, services, projects) {
 			$scope.currentPage = 1;
 			$scope.filterProjects = $scope.projects.slice(0,12);
 		}
+	}
+});
+
+hellscripts.controller('menuCtrl', function($scope,services,$cookies,$window,loginService) {
+	$scope.logout = function(){
+		loginService.logout();
+        $window.location.href = '#/';
+        $window.location.reload();
 	}
 });

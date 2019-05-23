@@ -15,7 +15,10 @@ class User extends ModelController{
     }
     public function register($userParams,$authParams){
         $authParams->token=md5(microtime(true).mt_Rand());
-        $this->postNewUser($userParams,$authParams);
+        $this->postNewUser($userParams,$authParams);   
         return $authParams->token;
+    }
+    public function activate($token){
+        return $this->activateUser($token);
     }
 }

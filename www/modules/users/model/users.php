@@ -1,6 +1,7 @@
 <?
 include_once dirname(__FILE__).'/../../../../backend/includes/constants.php';
 include_once _PROJECT_PATH_.'/backend/includes/autoload.php';
+include_once dirname(__FILE__).'/activationEmail.php';
 $method = $_SERVER['REQUEST_METHOD'];
 $headers = apache_request_headers();
 if ($method=='POST'){
@@ -21,6 +22,7 @@ if ($method=='POST' && property_exists($postParams,'password')
     $authParams->token = $headers['Authorization'];
     unset($postParams->password);
     $results = $object->register($postParams,$authParams);
+    $email = sendEmail($postParams->email,$results);
     echo $results;
 } else {
     $object = User::getInstance($headers['Authorization']);

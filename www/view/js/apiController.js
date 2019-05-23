@@ -14,7 +14,6 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
             query=query.concat('/'+key+'-'+get[key]);
          }
       }
-      console.log(query);
       $http({
          method: 'GET',
          url: serviceBase + module + query,
@@ -22,7 +21,6 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
             'Authorization': $cookies.get('token')
          },
          }).success(function(data, status, headers, config) {
-            console.log(data);
             defered.resolve(data);
          }).error(function(data, status, headers, config) {
             console.log(data);

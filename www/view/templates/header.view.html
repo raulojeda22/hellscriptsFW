@@ -1,4 +1,4 @@
-<header role="banner" class="probootstrap-header border-bottom">
+<header ng-controller="menuCtrl" role="banner" class="probootstrap-header border-bottom">
     <div class="container">
         <h1 class="probootstrap-logo">Hell Scripts</h1>
         
@@ -16,13 +16,18 @@
             </ul>
             <ul class="probootstrap-right-nav hidden-xs">
                 <li id="cartButton"><a href="#/users" id="cartLink" class="btn btn-sm btn-primary btn-link"><i class="icon-cart"></i></a></li>
-                <li id="userButton"><a href="#/users" class="btn btn-sm btn-primary btn-link">Log in <i class="icon-user"></i></a></li>
+                <li id="userButton">
+                    <button ng-click="logout()" ng-show="loggedIn" class="btn btn-primary btn-sm btn-link logout">Log out <i class="icon-user"></i></button>
+                    <a ng-show="!loggedIn" href="#/users" class="btn btn-sm btn-primary btn-link">Log in <i class="icon-user"></i></a>
+                </li>
+                
             </ul>
         </nav>
-        <nav role="navigation" class="probootstrap-nav hidden-xs">
+        <nav ng-show="loggedIn" role="navigation" class="probootstrap-nav hidden-xs">
             <ul class="probootstrap-right-nav hidden-xs">
-                <li id="userInfo"></li>
+                <li id="userInfo"><h4>{{user.email}} <img src="{{user.avatar}}"/></h4></li>
             </ul>
         </nav>
+				
     </div>
 </header>
