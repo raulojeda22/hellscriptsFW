@@ -22,11 +22,20 @@ if ($method=='POST' && property_exists($postParams,'password')
     $authParams->token = $headers['Authorization'];
     unset($postParams->password);
     $results = $object->register($postParams,$authParams);
-    $email = sendEmail($postParams->email,$results);
+    $email = sendActivationEmail($postParams->email,$results);
     echo $results;
+} else if ($method=='PUT'){
+    $update=(array)json_decode($_POST['data']);
+    error_log(print_r($_GET,1));
+    error_log(print_r($update,1));    
+    if (isset($_GET['token']) && isset($_GET['email']) && isset($update['password']) ){
+        echo User::changePassword($_GET['email'],$_GET['token'],$update['password']);
+    } else {
+        //profile
+        error_log('BAAAAAAAAAAAAAAAAAAAAAIA');
+    }
 } else {
     $object = User::getInstance($headers['Authorization']);
     include_once _PROJECT_PATH_.'/backend/controllers/ApiController.php';
     echo json_encode($results);
-    
 }

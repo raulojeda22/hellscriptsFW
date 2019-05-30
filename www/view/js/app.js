@@ -18,7 +18,6 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
         controller: "detailsProjectCtrl",
         resolve: {
             project: function (services, $route) {
-                console.log(services.get('projects',{id: $route.current.params.id}));
                 return services.get('projects',{ id: $route.current.params.id});
             }
         }
@@ -30,13 +29,17 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
     // Contact
     .when("/contact", {templateUrl: "www/modules/contact/view/contact.view.html", controller: "contactCtrl"})
 
+    .when("/recover/:email/:token", {
+        templateUrl: "www/modules/password/view/changePassword.view.html", 
+        controller: "passwordCtrl"
+    })
+
     // else 404
     .otherwise("/", {templateUrl: "www/view/templates/404.view.html", controller: "404Ctrl"});
 }]).run(function(services,$cookies,$rootScope,$window){
     $rootScope.loggedIn=false;
     object={id:$cookies.get('idUser')};
     services.get('users',object).then(function(response){
-        console.log(response);
         $rootScope.user=response[0];
         if ($rootScope.user!=null){
             $rootScope.loggedIn=true;

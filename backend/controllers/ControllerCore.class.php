@@ -198,4 +198,20 @@ class ControllerCore{
             return $user;
         }
     }
+    public static function changePassword($email,$token,$password){
+        $user = 'SELECT * FROM users';
+        $user .= self::addWhereStatement(array("email" => $email));
+        $user = self::runQuery($user)->fetch_object();
+        $authentication = 'SELECT * FROM authentication';
+        $authentication .= self::addWhereStatement(array("secret" => $user->id));
+        $authentication = self::runQuery($authentication)->fetch_object();
+        if ($token == $authentication->token){
+            $updatePassword = 'UPDATE authentication set password=\''.password_hash($password,PASSWORD_DEFAULT).'\'';
+            $updatePassword .= self::addWhereStatement(array("secret" => $user->id));
+            $updatePassword = self::runQuery($updatePassword);
+            return $updatePassword;
+        } else {
+            return false;
+        }
+    }
 }

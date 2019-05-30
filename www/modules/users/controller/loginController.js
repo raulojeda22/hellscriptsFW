@@ -42,4 +42,13 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 			});
 		});
 	}
+
+	$scope.recoverPassword = function(){
+		var object = {};
+		object.email=$scope.login.email;
+		services.post('password',object).then(function (response) {
+			$window.location.href = '#/';
+			$window.location.reload();
+		});
+	}
 });

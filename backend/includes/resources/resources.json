@@ -6,5 +6,6 @@
 	"contact",
 	"auth0",
 	"auth0callback",
-	"activate"
+	"activate",
+	"password"
 ]
