@@ -1,0 +1,88 @@
+<section class="probootstrap-section">
+    <div class="container">
+        <h1 class="userProfile">{{user.username}}</h1>
+    </div>
+    <div class="container">
+        <button ng-click="userProfile()" class="btn btn-primary" id="userProfile">Profile</button>
+        <button ng-click="updateProfile()" class="btn btn-primary" id="updateProfile">Update profile</button>
+        <button ng-click="projectProfile()" class="btn btn-primary" id="projectProfile">Created projects</button>
+    </div>
+    <br>
+    <br>
+    <div ng-show="userMenu" class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <p><img height="250px" width="250px" src="{{user.avatar}}" class="imageProfile" alt=""
+                        class="img-responsive img-border"></p>
+                <h2 class="emailProfile"></h2>
+                <p class="nameProfile">{{user.name}}</p>
+            </div>
+            <div class="col-md-3">
+                <div class="panel-group probootstrap-panel" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <p>
+                                    Email
+                                </p>
+                            </h4>
+                        </div>
+                        <div>
+                            <div class="panel-body">
+                                <p class="emailProfile">{{user.email}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <p>
+                                    Name
+                                </p>
+                            </h4>
+                        </div>
+                        <div>
+                            <div class="panel-body">
+                                <p class="nameProfile">{{user.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="updateMenu" id="profileOptions" class="container">
+        <form class="probootstrap-form mb60">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input ng-model="updateData.username" type="text" class="form-control updateFormElement" id="usernameUpdate" name="username"
+                            value="{{user.username}}">
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input ng-model="updateData.name" type="text" class="form-control updateFormElement" id="nameUpdate" name="name" value="{{user.name}}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input ng-model="updateData.email" type="email" class="form-control updateFormElement" id="emailUpdate" name="email" value="{{user.email}}">
+            </div>
+            <div class="form-group">
+                <input ng-click="update()" type="button" class="btn btn-primary" id="updateSubmit" name="submit" value="Update">
+            </div>
+        </form>
+    </div>
+    <div ng-show="projectsMenu" class="container">
+        <div class="row row-eq-height probootstrap-animate" id="allProfileProjects"></div>
+    </div>
+</section>
+
+<section class="probootstrap-section">
+
+</section>
+<!-- END section -->

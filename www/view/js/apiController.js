@@ -4,8 +4,6 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
    var token = $cookies.get('token');
    if (token == null) token = '';
    obj.get = function (module, get) {
-      console.log(module);
-      console.log(get);
       var defered=$q.defer();
       var promise=defered.promise;
       var query='';
@@ -54,15 +52,12 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
       var defered=$q.defer();
       var promise=defered.promise;
       var query='';
-      console.log(get);
       var query='';
       if (typeof get === 'object' && get !== null){
          for(var key in get) {
             query=query.concat('/'+key+'-'+get[key]);
          }
       }
-      console.log(query);
-      console.log(data);
       $http({
          method: 'PUT',
          url: serviceBase + module + query,
@@ -80,8 +75,6 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
    };
 
    obj.delete = function (module, get) {
-      console.log(module);
-      console.log(get);
       var defered=$q.defer();
       var promise=defered.promise;
       var query='';

@@ -26,13 +26,17 @@ if ($method=='POST' && property_exists($postParams,'password')
     echo $results;
 } else if ($method=='PUT'){
     $update=(array)json_decode($_POST['data']);
-    error_log(print_r($_GET,1));
-    error_log(print_r($update,1));    
     if (isset($_GET['token']) && isset($_GET['email']) && isset($update['password']) ){
         echo User::changePassword($_GET['email'],$_GET['token'],$update['password']);
     } else {
         //profile
-        error_log('BAAAAAAAAAAAAAAAAAAAAAIA');
+        $object = User::getInstance($headers['Authorization']);
+        error_log('BAAAAAAAAAAAAAAAAAAAAAIA1');
+        $data=array();
+        $data[0]=$_GET;
+        $data[1]=$update;
+        $response = $object->$method($data);
+        error_log('BAAAAAAAAAAAAAAAAAAAAAIA2');
     }
 } else {
     $object = User::getInstance($headers['Authorization']);

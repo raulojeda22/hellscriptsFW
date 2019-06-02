@@ -26,8 +26,12 @@ hellscripts.controller('homeCtrl', function ($scope, services, projects) {
 	}
 });
 
-hellscripts.controller('menuCtrl', function($scope,services,$cookies,$window,loginService) {
+hellscripts.controller('menuCtrl', function($scope,services,$cookies,$window,loginService,toastr) {
 	$scope.logout = function(){
+		toastr.success('Logged out','See you!',{
+			closeButton: true,
+			timeOut: 2000
+		});	
 		loginService.logout();
 		services.delete('auth0',{}).then(function(response){
 			$window.location.href = response;

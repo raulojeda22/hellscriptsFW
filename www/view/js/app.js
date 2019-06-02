@@ -1,4 +1,4 @@
-var hellscripts = angular.module('hellscripts',['ngRoute','ngCookies','ui.bootstrap']);
+var hellscripts = angular.module('hellscripts',['ngRoute','ngCookies','ui.bootstrap','toastr']);
 hellscripts.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
     // Home
@@ -29,6 +29,12 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
     // Contact
     .when("/contact", {templateUrl: "www/modules/contact/view/contact.view.html", controller: "contactCtrl"})
 
+    // Profile
+    .when("/profile", {templateUrl: "www/modules/profile/view/profile.view.html", controller: "profileCtrl"})
+
+    // Contact
+    .when("/projects", {templateUrl: "www/modules/projects/view/projects.view.html", controller: "projectsCtrl"})
+
     .when("/recover/:email/:token", {
         templateUrl: "www/modules/password/view/changePassword.view.html", 
         controller: "passwordCtrl"
@@ -36,15 +42,23 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
 
     // else 404
     .otherwise("/", {templateUrl: "www/view/templates/404.view.html", controller: "404Ctrl"});
-}]).run(function(services,$cookies,$rootScope,$window){
+}]).run(function(services,$cookies,$rootScope,$window,loginService,toastr){
     $rootScope.loggedIn=false;
     object={id:$cookies.get('idUser')};
     services.get('users',object).then(function(response){
         $rootScope.user=response[0];
         if ($rootScope.user!=null){
-            $rootScope.loggedIn=true;
-            if ($rootScope.user.avatar==''){
-                $rootScope.user.avatar='https://api.adorable.io/avatars/40/'+$rootScope.user.email;
+            if ($rootScope.user.activated!=1){
+                toastr.success('Please activate your account','Check your inbox',{
+					closeButton: true,
+					timeOut: 2000
+				});
+                loginService.logout();
+            } else {
+                $rootScope.loggedIn=true;
+                if ($rootScope.user.avatar==''){
+                    $rootScope.user.avatar='https://api.adorable.io/avatars/250/'+$rootScope.user.email;
+                }
             }
         }
     });

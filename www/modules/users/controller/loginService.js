@@ -1,5 +1,5 @@
-hellscripts.factory("loginService", ['services','$cookies','$window',
-function (services,$cookies,$window) {
+hellscripts.factory("loginService", ['services','$cookies','$window','toastr',
+function (services,$cookies,$window,toastr) {
     var service = {};
     service.logout = function () {
         $cookies.remove('token');

@@ -1,4 +1,4 @@
-hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope,$cookies,$window,loginService) {
+hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope,$cookies,$window,loginService,toastr) {
 
 	$scope.submitLogin = function(){
 		loginService.logout();
@@ -7,12 +7,21 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 			object = Object.assign({[name]: $scope.login[name]},object);
 		}
 		services.post('users',object).then(function (response) {
+			toastr.success('Logged in', '',{
+				closeButton: true,
+				timeOut: 1500
+			});
 			$cookies.put('token',response);
 			$cookies.put('email', object.email);
 			services.get('users',{email: object.email}).then(function (response) {
 				Cookies.set('idUser',response[0].id);
 				$window.location.href = '#/';
 				$window.location.reload();
+			});
+		}, function(reason) {
+			toastr.error('Wrong password', '',{
+				closeButton: true,
+				timeOut: 1500
 			});
 		});
 	};
@@ -36,9 +45,19 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 			$cookies.put('token',response);
 			$cookies.put('email', object.email);
 			services.get('users',{email: object.email}).then(function (response) {
+				toastr.success('Activation mail sent','',{
+					closeButton: true,
+					timeOut: 2000
+				});
 				Cookies.set('idUser',response[0].id);
 				$window.location.href = '#/';
 				$window.location.reload();
+			},function(reason){
+				console.log(reason);
+				toastr.error('Something whent wrong','Probably the email already exists',{
+					closeButton: true,
+					timeOut: 2000
+				});
 			});
 		});
 	}
@@ -46,6 +65,9 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 	$scope.recoverPassword = function(){
 		var object = {};
 		object.email=$scope.login.email;
+		toastr.success('Email sent', '',{
+			closeButton: true
+		});
 		services.post('password',object).then(function (response) {
 			$window.location.href = '#/';
 			$window.location.reload();
