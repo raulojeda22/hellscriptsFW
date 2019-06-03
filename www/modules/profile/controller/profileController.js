@@ -22,6 +22,9 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 			$scope.updateMenu=false;
 			$scope.userMenu=false;
 			$scope.projectsMenu=true;
+			services.get('projects',{idUser:$rootScope.user.id}).then(function(data){
+				$scope.myProjects=data;
+			});
 		}
 		$scope.update = function(){
 			var find = {};
@@ -31,6 +34,8 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 			updateData.name=$scope.updateData.name;
 			updateData.email=$scope.updateData.email;
 			updateData.avatar=$scope.updateData.avatar;
+			updateData.country=$scope.selectedCountry;
+			updateData.province=$scope.selectedProvince;
 			toastr.success('User updated', '',{
 				closeButton: true
 			});
@@ -63,6 +68,11 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 					$('.msg').animate({'right': '300px'}, 300);
 				}
 			}
-	}};
+		}
+	};
+
+	services.getFile('www/view/json/countries.json').then(function(data){
+		$scope.countries = data;
+	});
 
 });

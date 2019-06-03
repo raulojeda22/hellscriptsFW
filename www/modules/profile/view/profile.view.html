@@ -57,37 +57,61 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="userName">Username</label>
-                        <input ng-model="updateData.username" type="text" class="form-control updateFormElement" id="usernameUpdate" name="username"
-                            value="{{user.username}}">
+                        <input ng-model="updateData.username" type="text" class="form-control updateFormElement"
+                            id="usernameUpdate" name="username" value="{{user.username}}">
                     </div>
-                    </div>
-                    <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input ng-model="updateData.name" type="text" class="form-control updateFormElement" id="nameUpdate" name="name" value="{{user.name}}">
+                        <input ng-model="updateData.name" type="text" class="form-control updateFormElement"
+                            id="nameUpdate" name="name" value="{{user.name}}">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input ng-model="updateData.email" type="email" class="form-control updateFormElement" id="emailUpdate" name="email" value="{{user.email}}">
+                <input ng-model="updateData.email" type="email" class="form-control updateFormElement" id="emailUpdate"
+                    name="email" value="{{user.email}}">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="avatar">Avatar</label>
+                        <button id="dropzone" dropzone="dropzoneConfig" class="dropzone"></button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        Country:<br/>
+                        <select id="country" ng-model="selectedCountry"
+                            ng-options="country.country as country.country for country in countries track by country.country">
+                            <option value="">{{user.country}}</option>
+                        </select>
+                        <br/>
+                        <br/>
+                        Province:<br/>
+                        <select id="province" ng-model="selectedProvince" ng-disabled="!selectedCountry"
+                            ng-options="province for province in ((countries | filter:{'country':selectedCountry})[0].provinces) track by province">
+                            <option value="">{{user.province}}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
-                <label for="avatar">Avatar</label>
-                <button id="dropzone" dropzone="dropzoneConfig" class="dropzone"></button>
+                <input ng-click="update()" type="button" class="btn btn-primary" id="updateSubmit" name="submit"
+                    value="Update">
             </div>
-            <div class="form-group">
-                <input ng-click="update()" type="button" class="btn btn-primary" id="updateSubmit" name="submit" value="Update">
-            </div>
-            
+
         </form>
     </div>
     <div ng-show="projectsMenu" class="container">
-        <div class="row row-eq-height probootstrap-animate" id="allProfileProjects"></div>
+        <div class="row" id="allProfileProjects">
+            <div class="alignColumn col-lg-2 col-md-3 col-sm-4" ng-repeat="project in myProjects">
+                <div ng-include="'www/modules/projects/view/project.view.html'"></div>
+            </div>
+        </div>
     </div>
 </section>
 
-<section class="probootstrap-section">
-
-</section>
 <!-- END section -->

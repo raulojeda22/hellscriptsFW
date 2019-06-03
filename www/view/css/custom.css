@@ -336,3 +336,8 @@ body {
 	*/
 	height: 245px;
 }
+
+select {
+  background-color: black;
+  border: black;
+}

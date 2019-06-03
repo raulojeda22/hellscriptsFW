@@ -27,6 +27,21 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
       return promise;
    };
 
+   obj.getFile = function (url){
+      var defered=$q.defer();
+      var promise=defered.promise;
+      $http({
+         method: 'GET',
+         url: url
+         }).success(function(data, status, headers, config) {
+            defered.resolve(data);
+         }).error(function(data, status, headers, config) {
+            console.log(data);
+            defered.reject(data);
+      });
+      return promise;
+   }  
+
    obj.post = function (module, data) {
 
       var defered=$q.defer();
