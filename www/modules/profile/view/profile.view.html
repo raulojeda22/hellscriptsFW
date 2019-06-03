@@ -5,7 +5,7 @@
     <div class="container">
         <button ng-click="userProfile()" class="btn btn-primary" id="userProfile">Profile</button>
         <button ng-click="updateProfile()" class="btn btn-primary" id="updateProfile">Update profile</button>
-        <button ng-click="projectProfile()" class="btn btn-primary" id="projectProfile">Created projects</button>
+        <button ng-click="projectsProfile()" class="btn btn-primary" id="projectProfile">Created projects</button>
     </div>
     <br>
     <br>
@@ -73,8 +73,13 @@
                 <input ng-model="updateData.email" type="email" class="form-control updateFormElement" id="emailUpdate" name="email" value="{{user.email}}">
             </div>
             <div class="form-group">
+                <label for="avatar">Avatar</label>
+                <button id="dropzone" dropzone="dropzoneConfig" class="dropzone"></button>
+            </div>
+            <div class="form-group">
                 <input ng-click="update()" type="button" class="btn btn-primary" id="updateSubmit" name="submit" value="Update">
             </div>
+            
         </form>
     </div>
     <div ng-show="projectsMenu" class="container">
