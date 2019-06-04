@@ -1,13 +1,11 @@
 # Hell Scripts FW
 
-Hell Scripts FW is a web page for learning purposes built at classroom using PHP7, Jquery, MVC, SQL, Apache, a PHP Object Oriented Framework to manage objects from the database, an external API and an internal API based on authentication and permissions to resources.
+Hell Scripts FW is a web page for learning purposes built at classroom using PHP7, AngularJS, MVC, SQL, Apache, a PHP Object Oriented Framework to manage objects from the database, an external login API and an internal API based on authentication and permissions to resources.
 
 ### Pages
 
   - Home
-  - Explore
   - Projects
-  - JqWidgets
   - Profile
   - Contact
   - Users
@@ -19,54 +17,46 @@ Hell Scripts FW is a web page for learning purposes built at classroom using PHP
 
 Hell Scripts FW uses a number of open source projects to work properly:
 
-* PHP
-* Bootstrap
-* jQuery
-* SQL
+* PHP7
+* Bootstrap 
+* AngularJS - v1.4.9
+* MySQL
 
 ### Features
 
-<table width="673">
+<table>
 <tbody>
 <tr>
-<td style="text-align:center;" width="183" bgcolor="#CCFFFF"><strong>PAGE</strong></td>
-<td style="text-align:center;" bgcolor="#CCFFFF"><strong>Features</strong></td>
+<td bgcolor="#CCFFFF"><strong>PAGE</strong></td>
+<td bgcolor="#CCFFFF"><strong>Features</strong></td>
 </tr>
 <tr>
-<td style="text-align:center;" >Home</td>
-<td style="text-align:center;" bgcolor="#CCFFFF">Carousel, Filters Search, Projects, Github API</td>
+<td >Home</td>
+<td >Search, pager, list/details, autoredirect, </td>
 </tr>
 <tr>
-<td style="text-align:center;">Explore</td>
-<td style="text-align:center;">List, Details, Github API</td>
+<td>Projects</td>
+<td>Datatable, CRUD, DELETE ALL, get projects owned by the user, the user can also create his projects, admin features</td>
 </tr>
 <tr>
-<td style="text-align:center;">Projects</td>
-<td style="text-align:center;">Datatable, modal, validation PHP/JS, CRUD, DELETE ALL, Get Projects owned by User, The user can also create his projects, Admin features, Redirect non registered user</td>
+<td>Login</td>
+<td>Register, login, logout, encrypt password, avatar, token based auth, recover password, toastr, Social Login Auth0 PHP, Social logout, activation email</td>
 </tr>
 <tr>
-<td style="text-align:center;">JqWidgets</td>
-<td style="text-align:center;">CSS to dark-red theme</td>
-</tr>
-<tr>
-<td style="text-align:center;">Login</td>
-<td style="text-align:center;">Register, Login, Logout, validation PHP / JS, encrypt passwd, avatar, Enter, Token based Auth</td>
-</tr>
-<tr>
-<td style="text-align:center;">Contact</td>
-<td style="text-align:center;">GMaps, Hide key, CSS dark-red theme</td>
+<td>Contact</td>
+<td>Send email (mailgun)</td>
 </tr>
  <tr>
-<td style="text-align:center;">Profile</td>
-<td style="text-align:center;">User Info, Projects created by the user, Redirect non registered user</td>
+<td>Profile</td>
+<td>User info, dependent dropdown, dropzone, projects created by the user</td>
 </tr>
 <tr>
-<td style="text-align:center;">Cart</td>
-<td style="text-align:center;">Add in home,list and details, validation PHP/JS and checkout</td>
+<td>Cart</td>
+<td>Add in home,list and details, increase and decrease, checkout</td>
 </tr>
 <tr>
-<td style="text-align:center;">Application</td>
-<td style="text-align:center;">Template, 404, MVC, Github: readme, .gitignore, constants, API PHP Database Object Framework</td>
+<td>PHP Framework</td>
+<td>2 user tables, clean controllers, classes with extends, yml, user authorized, autoload, ORM, pretty URLs</td>
 </tr>
 </tbody>
 </table>
@@ -84,16 +74,10 @@ Finally you should create the tables located on the /backend/mwb/hellscripts.mwb
 
 ![alt text](https://raw.githubusercontent.com/raulojeda22/hellscriptsFW/master/backend/models/mwb/databaseScheme.png)
 
-### Todos
-
- - Chats
- - Developers page
- - Vinculate projects with git
+### PHP Authorization Framework
+This project uses a resource-based authentication <strong>generic</strong> API that enables different types of users to have different types of permissions on the diferent resources of the app.
 
 License
 ----
-
 [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html)
 
-
-**Free Software, Hell Yeah!**
