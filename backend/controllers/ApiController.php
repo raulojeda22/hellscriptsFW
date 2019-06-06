@@ -33,9 +33,10 @@ if ($method=='GET'||$method=='DELETE'){
         die();
     }
 } else if ($method=='PUT'){
-    parse_str(file_get_contents("php://input"),$data);
-    $data=$data['data'];
-    $data[1]=(array)json_decode($data[1]);
+    $update=(array)json_decode($_POST['data']);
+    $data=array();
+    $data[0]=$_GET;
+    $data[1]=$update;
     $response = $object->$method($data);
     if ($response){
         $results=$response;

@@ -1,0 +1,52 @@
+<section class="probootstrap-section">
+    <div class="container">
+        <form id="update_form" name="update_form" action="#" method="post" class="probootstrap-form mb60">
+            <div class="form-group">
+                <label for="fname">Name*</label>
+                <input required  type="text" name="name" class="form-control projectFormElement" id="fname" name="fname" ng-model="update.name" >
+                <span class="text-danger" ng-show="update_form.name.$error.required && (update_form.name.$dirty || update_form.name.$touched)">Input a name</span>
+            </div>
+            <div class="form-group">
+                <label for="message">Description*</label>
+                <textarea required cols="30" rows="10" class="form-control projectFormElement" id="message" name="description" ng-model="update.description" placeholder="The amazing features of my idea..."></textarea>
+                <span class="text-danger" ng-show="update_form.description.$error.required && (update_form.description.$dirty || update_form.description.$touched)">Input a description</span>
+            </div>
+            <div class="form-group">
+                <label for="website">Website*</label>
+                <input required type="url" class="form-control projectFormElement" id="website" name="website" ng-model="update.website" placeholder="https://hellscripts.com">
+                <span class="text-danger" ng-show="update_form.website.$error.required && (update_form.website.$dirty || update_form.website.$touched)">Input a website</span>
+                <span class="text-danger" ng-show="update_form.website.$error.url">Invalid url</span>
+            </div>
+            <div class="form-group">
+                <label for="image">Image url*</label>
+                <input required type="url" class="form-control projectFormElement" id="image" name="image" ng-model="update.image" placeholder="https://screenshotlayer.com/images/assets/placeholder.png">
+                <span class="text-danger" ng-show="update_form.image.$error.required && (update_form.image.$dirty || update_form.image.$touched)">Input an image url</span>
+                <span class="text-danger" ng-show="update_form.image.$error.url">Invalid url</span>
+            </div>
+            <div class="form-group">
+                <label for="price">Price*</label>
+                <input required type="number" class="form-control projectFormElement" id="price" name="price" ng-model="update.price" min="0" placeholder="50">
+                <span class="text-danger" ng-show="update_form.price.$error.required && (update_form.price.$dirty || update_form.price.$touched)">Input a price</span>
+                <span class="text-danger" ng-show="update_form.price.$error.min">Price can't be less than 0</span>
+            </div>
+            <div class="form-group">
+                <label>License</label>
+                <select required class="form-control projectFormElement" name="license" ng-model="update.license" id="license">
+                    <option value="Apache">Apache License 2.0</option>
+                    <option value="GNU">GNU General Public License</option>
+                    <option value="MIT">MIT license</option>
+                    <option value="CDDL">Common Development and Distribution License</option>
+                </select>
+                <span class="text-danger" ng-show="update_form.license.$error.required && (update_form.license.$dirty || update_form.license.$touched)">Input a license</span>
+            </div>
+                
+            <div class="form-group">
+                <label>Programming languages: *</label> <h4 class="text-muted">(Separate them in commas)</h4>
+                <textarea required cols="30" rows="10" class="form-control projectFormElement" placeholder="PHP, Javascript, CSS, HTML" id="message" name="languages" ng-model="update.languages"></textarea>
+            </div>
+            <div class="form-group">
+                <button ng-click="updateProject()" type="button" class="btn btn-primary" id="projectFormButton" name="submit" ng-show="update_form.name.$valid && update_form.description.$valid && update_form.website.$valid && update_form.image.$valid && update_form.price.$valid && update_form.license.$valid && update_form.languages.$valid">update</button>
+            </div>
+        </form>
+    </div>
+</section>

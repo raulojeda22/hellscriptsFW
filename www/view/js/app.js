@@ -30,10 +30,38 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
     .when("/contact", {templateUrl: "www/modules/contact/view/contact.view.html", controller: "contactCtrl"})
 
     // Profile
-    .when("/profile", {templateUrl: "www/modules/profile/view/profile.view.html", controller: "profileCtrl"})
+    .when("/profile", {
+        templateUrl: "www/modules/profile/view/profile.view.html", 
+        controller: "profileCtrl",
+        resolve: {
+            user: function (services,$cookies){
+                object={id:$cookies.get('idUser')};
+                return services.get('users',object);
+            }
+        }
+    })
 
     // Contact
-    .when("/projects", {templateUrl: "www/modules/projects/view/projects.view.html", controller: "projectsCtrl"})
+    .when("/projects", {
+        templateUrl: "www/modules/projects/view/projects.view.html", 
+        controller: "projectsCtrl",
+        resolve: {
+            projects: function (services,$cookies){
+                object={idUser:$cookies.get('idUser')};
+                return services.get('projects',object);
+            }
+        }
+    })
+
+    .when("/update/:id", {
+        templateUrl: "www/modules/projects/view/update.view.html",
+        controller: "updateProjectCtrl",
+        resolve: {
+            project: function (services, $route) {
+                return services.get('projects',{ id: $route.current.params.id});
+            }
+        }
+    })
 
     .when("/recover/:email/:token", {
         templateUrl: "www/modules/password/view/changePassword.view.html", 

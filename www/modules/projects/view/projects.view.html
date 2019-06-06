@@ -1,0 +1,107 @@
+<section class="probootstrap-section">
+    <div ng-show="crudProjectsPage" id="projectPageContent">
+        <div class="container">
+            <div class="col-md-12 section-heading">
+                <h2 class="mb20">DO YOU HAVE AN AMAZING PROJECT IN MIND?</h2>
+                <button ng-click="createPage()" id="createProject" type="button" class="btn btn-primary">Create project</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading">
+                    <h2 class="mb20">Datatables</h2>
+                </div>
+            </div>
+            <div class="table-responsive" id="allTableProjectsDiv">
+                <table class="table table-condensed table-dark" id="allTableProjects">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Website</th>
+                            <th>License</th>
+                            <th>Privacy</th>
+                            <th>Languages</th>
+                            <th>Get</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="project in projects"  id="allTableProjectsBody">
+                        <tr id="project{{project.id}}">
+                            <td><h6>{{project.id}}</h6></td>
+                            <td><h6>{{project.name}}</h6></td>
+                            <td><h6>{{project.description}}</h6></td>
+                            <td><h6>{{project.website}}</h6></td>
+                            <td><h6>{{project.license}}</h6></td>
+                            <td><h6>{{project.privacy}}</h6></td>
+                            <td><h6>{{project.languages}}</h6></td>
+                            <td><a href="#/explore/{{project.id}}" class="btn btn-primary btn-sm projectGet" name="GET">Get</a></td>
+                            <td><a href="#/update/{{project.id}}" class="btn btn-primary btn-sm projectUpdate" name="PUT">Update</a></td>
+                            <td><button ng-click="deleteProject(project.id)" class="btn btn-primary btn-sm projectDelete" name="DELETE">Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div ng-show="createProjectPage" id="projectPageContent">
+        <div class="container">
+            <div class="col-md-12 section-heading">
+                <h2 class="mb20">Modify your projects</h2>
+                <button ng-click="crudPage()" id="crudProject" type="button" class="btn btn-primary">Projects CRUD</button>
+            </div>
+        </div>
+        <div class="container">
+            <form id="create_form" name="create_form" action="#" method="post" class="probootstrap-form mb60">
+                <div class="form-group">
+                    <label for="fname">Name*</label>
+                    <input required type="text" name="name" class="form-control projectFormElement" id="fname" name="fname" ng-model="create.name" placeholder="My innovative idea">
+                    <span class="text-danger" ng-show="create_form.name.$error.required && (create_form.name.$dirty || create_form.name.$touched)">Input a name</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Description*</label>
+                    <textarea required cols="30" rows="10" class="form-control projectFormElement" id="message" name="description" ng-model="create.description" placeholder="The amazing features of my idea..."></textarea>
+                    <span class="text-danger" ng-show="create_form.description.$error.required && (create_form.description.$dirty || create_form.description.$touched)">Input a description</span>
+                </div>
+                <div class="form-group">
+                    <label for="website">Website*</label>
+                    <input required type="url" class="form-control projectFormElement" id="website" name="website" ng-model="create.website" placeholder="https://hellscripts.com">
+                    <span class="text-danger" ng-show="create_form.website.$error.required && (create_form.website.$dirty || create_form.website.$touched)">Input a website</span>
+                    <span class="text-danger" ng-show="create_form.website.$error.url">Invalid url</span>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image url*</label>
+                    <input required type="url" class="form-control projectFormElement" id="image" name="image" ng-model="create.image" placeholder="https://screenshotlayer.com/images/assets/placeholder.png">
+                    <span class="text-danger" ng-show="create_form.image.$error.required && (create_form.image.$dirty || create_form.image.$touched)">Input an image url</span>
+                    <span class="text-danger" ng-show="create_form.image.$error.url">Invalid url</span>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price*</label>
+                    <input required type="number" class="form-control projectFormElement" id="price" name="price" ng-model="create.price" min="0" placeholder="50">
+                    <span class="text-danger" ng-show="create_form.price.$error.required && (create_form.price.$dirty || create_form.price.$touched)">Input a price</span>
+                    <span class="text-danger" ng-show="create_form.price.$error.min">Price can't be less than 0</span>
+                </div>
+                <div class="form-group">
+                    <label>License</label>
+                    <select required class="form-control projectFormElement" name="license" ng-model="create.license" id="license">
+                        <option value="Apache">Apache License 2.0</option>
+                        <option value="GNU">GNU General Public License</option>
+                        <option value="MIT">MIT license</option>
+                        <option value="CDDL">Common Development and Distribution License</option>
+                    </select>
+                    <span class="text-danger" ng-show="create_form.license.$error.required && (create_form.license.$dirty || create_form.license.$touched)">Input a license</span>
+                </div>
+                    
+                <div class="form-group">
+                    <label>Programming languages: *</label> <h4 class="text-muted">(Separate them in commas)</h4>
+                    <textarea required cols="30" rows="10" class="form-control projectFormElement" placeholder="PHP, Javascript, CSS, HTML" id="message" name="languages" ng-model="create.languages"></textarea>
+                </div>
+                <div class="form-group">
+                    <button ng-click="createProject()" type="button" class="btn btn-primary" id="projectFormButton" name="submit" ng-show="create_form.name.$valid && create_form.description.$valid && create_form.website.$valid && create_form.image.$valid && create_form.price.$valid && create_form.license.$valid && create_form.languages.$valid">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -31,12 +31,10 @@ if ($method=='POST' && property_exists($postParams,'password')
     } else {
         //profile
         $object = User::getInstance($headers['Authorization']);
-        error_log('BAAAAAAAAAAAAAAAAAAAAAIA1');
         $data=array();
         $data[0]=$_GET;
         $data[1]=$update;
         $response = $object->$method($data);
-        error_log('BAAAAAAAAAAAAAAAAAAAAAIA2');
     }
 } else {
     $object = User::getInstance($headers['Authorization']);

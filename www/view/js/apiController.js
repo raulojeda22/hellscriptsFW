@@ -93,8 +93,10 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
       var defered=$q.defer();
       var promise=defered.promise;
       var query='';
-      for(var key in get) {
-         query.concat('/'+key+'-'+get[key]);
+      if (typeof get === 'object' && get !== null){
+         for(var key in get) {
+            query=query.concat('/'+key+'-'+get[key]);
+         }
       }
       $http({
          method: 'DELETE',
