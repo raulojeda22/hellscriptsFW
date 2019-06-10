@@ -53,6 +53,17 @@ hellscripts.config(['$routeProvider', function ($routeProvider) {
         }
     })
 
+    .when("/cart", {
+        templateUrl: "www/modules/cart/view/cart.view.html", 
+        controller: "cartCtrl",
+        resolve: {
+            cart: function (services,$cookies){
+                object={idUser:$cookies.get('idUser')};
+                return services.get('cart',object);
+            }
+        }
+    })
+
     .when("/update/:id", {
         templateUrl: "www/modules/projects/view/update.view.html",
         controller: "updateProjectCtrl",

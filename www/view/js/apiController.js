@@ -98,6 +98,7 @@ hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, 
             query=query.concat('/'+key+'-'+get[key]);
          }
       }
+      console.log(query);
       $http({
          method: 'DELETE',
          url: serviceBase + module + query,

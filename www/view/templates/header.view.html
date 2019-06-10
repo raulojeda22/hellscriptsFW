@@ -13,7 +13,7 @@
                 <li id="contact" class="bannerItem"><a href="#/contact" class="translate" data-original="Contact">Contact</a></li>
             </ul>
             <ul class="probootstrap-right-nav hidden-xs">
-                <li id="cartButton"><a href="#/users" id="cartLink" class="btn btn-sm btn-primary btn-link"><i class="icon-cart"></i></a></li>
+                <li ng-show="loggedIn" id="cartButton"><a href="#/cart" id="cartLink" class="btn btn-sm btn-primary btn-link"><i class="icon-cart"></i></a></li>
                 <li id="userButton">
                     <button ng-click="logout()" ng-show="loggedIn" class="btn btn-primary btn-sm btn-link logout">Log out <i class="icon-user"></i></button>
                     <a ng-show="!loggedIn" href="#/users" class="btn btn-sm btn-primary btn-link">Log in <i class="icon-user"></i></a>

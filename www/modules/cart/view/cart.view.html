@@ -1,0 +1,47 @@
+<section class="probootstrap-section">
+    <div id="cartPageContent">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading">
+                    <h2 class="mb20">Your cart</h2>
+                </div>
+            </div>
+            <div class="table-responsive" id="allTableCartDiv">
+                <table class="table table-condensed table-dark" id="cartTableCart">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price €</th>
+                            <th>Remove</th>
+                            <th>Count</th>
+                            <th>Add</th>
+                            <th>Total €</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="allTableCartBody">
+                        <tr ng-repeat="project in projects" id="project{{project.id}}">
+                            <td><img src="{{project.image}}" height="125px" width="125px"></td>
+                            <td><h1>{{project.id}}</h1></td>
+                            <td><h1>{{project.name}}</h1></td>
+                            <td><h1 id="price{{project.id}}">{{project.price}}</h1></td>
+                            <td><button ng-click="cartDelete(this)" class="btn btn-primary btn-sm cartDelete" data-id="{{project.id}}" name="DELETE"><i class="icon-minus"></i></td>
+                            <td><h1 id="count{{project.id}}">{{totalProjects(this)}}</h1></td>
+                            <td><button ng-click="cartPost(this)" class="btn btn-primary btn-sm cartPost" data-id="{{project.id}}" name="POST"><i class="icon-plus"></i></button></td>
+                            <td><h1 class="projectPrice" id="totalPrice{{project.id}}">{{totalProjectPrice(this)}}</h1></td>
+                            <td><button ng-click="projectDelete(this)" class="btn btn-primary btn-sm projectDelete" data-id="{{project.id}}" name="DELETE"><i class="icon-cross"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <h1 id="totalPrice">{{totalPrice()}}</h1>
+                    <button ng-click="checkoutCart()" id="checkoutCart" type="button" class="btn btn-primary">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
