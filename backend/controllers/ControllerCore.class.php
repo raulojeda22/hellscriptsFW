@@ -1,7 +1,16 @@
 <?
 include_once _PROJECT_PATH_.'/backend/models/Connection.class.php';
+/**
+ * Builds the queries and executes them
+ */
 class ControllerCore{
 
+    /**
+     * Used to build the where part of the query, using the keys and values of the array
+     *
+     * @param array $array each key is the name of the column and it's value is the param that will do the search
+     * @return string the where part of the query
+     */
     private function addWhereStatement($array){
         $conditions=count($array);
         $query='';
@@ -28,6 +37,12 @@ class ControllerCore{
         return $query.$limit;
     }
 
+    /**
+     * Used to build the limit part of the query, using the keys and values of the array
+     *
+     * @param int $limit specifies the limit on the query
+     * @return string the limit part of the query
+     */
     private function addLimitStatement($limit){
         $query='';
         $values=explode(',',$limit);
@@ -38,11 +53,24 @@ class ControllerCore{
         return $query;
     }
 
+    /**
+     * Adds a count statement to the query
+     *
+     * @todo this functions isn't finished
+     * @param string $query
+     * @return string the resultant query after adding the count
+     */
     private function addCountStatement($query){
         // change * to count(*)
         return $query;
     }
 
+    /**
+     * Runs the query 
+     *
+     * @param string $query
+     * @return boolean|array returns an array when the query is a select and a boolean in any other request
+     */
     protected function runQuery($query){
         $connection = Connection::connect();
         $response = mysqli_query($connection, $query);
@@ -50,6 +78,12 @@ class ControllerCore{
         return $response;
     }
 
+    /**
+     * Builds a select statement from a GET request
+     *
+     * @param array $data keys and values to build the where query
+     * @return string the final query
+     */
     protected function buildGetQuery($data){
         $query = 'SELECT * FROM '.$this->tableName;
         if ($data!="" && is_array($data)){
@@ -58,6 +92,13 @@ class ControllerCore{
         error_log($query);
         return $query;
     }
+
+    /**
+     * Builds an insert statement from a POST request
+     *
+     * @param array $data the columns and data that is going to be inserted
+     * @return string the final query
+     */
     protected function buildPostQuery($data){
         if ($data!="" && is_object($data)){
             $query = 'INSERT INTO '.$this->tableName;
@@ -76,6 +117,14 @@ class ControllerCore{
         }
         return $query;
     }
+
+    /**
+     * Builds an update query from a PUT request 
+     *
+     * @param array $data an array with 2 keys, the first one is used to build the where statement
+     * and the second to build the set statement
+     * @return string the final query
+     */
     protected function buildPutQuery($data){
         $count=0;
         error_log(print_r($data,1));
@@ -92,12 +141,25 @@ class ControllerCore{
         error_log($query);
         return $query;
     }
+
+    /**
+     * Builds a delete query from a DELETE request
+     *
+     * @param array $data keys and values to build the where query
+     * @return string 
+     */
     protected function buildDeleteQuery($data){
         $query = 'DELETE FROM '.$this->tableName;
         $query .= $this->addWhereStatement($data);
         return $query;
     }
 
+    /**
+     * Returns a user db object by it's token
+     *
+     * @param string $token the desired user token
+     * @return object user db object
+     */
     public static function retrieveUserByToken($token){
         $authentication = 'SELECT secret FROM authentication';
         $authentication .= self::addWhereStatement(array("token" => $token));
@@ -111,6 +173,13 @@ class ControllerCore{
         return false;
     }
 
+    /**
+     * Returns the permissions that has a user on the specified table
+     *
+     * @param int $idAuthorization type of authorization that the user has on this resource
+     * @param string $tableName
+     * @return object the permissions on each type of request on the given table
+     */
     public static function retrievePermissions($idAuthorization,$tableName){
         $table = 'SELECT * FROM tables';
         $table .= self::addWhereStatement(array("name" => $tableName));
@@ -126,6 +195,12 @@ class ControllerCore{
         return false;
     }
 
+    /**
+     * Gets the authentication data of the user by it's id
+     *
+     * @param int $id the id of the user
+     * @return object db authentication
+     */
     public static function getAuthenticationByUserId($id){
         $authentication = 'SELECT * FROM authentication';
         $authentication .= self::addWhereStatement(array("secret" => $id));
@@ -133,6 +208,12 @@ class ControllerCore{
         return $authentication;
     }
 
+    /**
+     * Gets the authentication info of the user by it's email
+     *
+     * @param string $email the email of the user
+     * @return object db authentication
+     */
     public static function getAuthenticationByEmail($email){
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
@@ -143,6 +224,13 @@ class ControllerCore{
         return $authentication;
     }
 
+    /**
+     * Retrieves the token of a user by it's email and password
+     *
+     * @param string $email 
+     * @param string $password
+     * @return string the token of the user
+     */
     public static function retrieveTokenByEmailAndPassword($email,$password){
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));
@@ -164,6 +252,14 @@ class ControllerCore{
             return false;
         }
     }
+
+    /**
+     * Inserts a user on the database and adds it's credentials to the authentication table
+     *
+     * @param object $userParams the data that is going to be added to the user main table
+     * @param object $authParams the data that is going to be added to the authentication table
+     * @return string the token of the new user
+     */
     public function postNewUser($userParams,$authParams){
         $user = 'SELECT * FROM users';
         $user .= $this->addWhereStatement(array("email" => $userParams->email));
@@ -183,6 +279,13 @@ class ControllerCore{
         }
         return false;   
     }
+
+    /**
+     * Activates a user on the page by it's token and returns it
+     *
+     * @param string $token
+     * @return object db user
+     */
     public static function activateUser($token){
         $authentication = 'SELECT * FROM authentication';
         $authentication .= self::addWhereStatement(array("token" => $token));
@@ -198,6 +301,15 @@ class ControllerCore{
             return $user;
         }
     }
+
+    /**
+     * Changes the password of the user by it's email and token
+     *
+     * @param string $email
+     * @param string $token
+     * @param string $password the new password of the user
+     * @return boolean whether the operation has been successfull or not
+     */
     public static function changePassword($email,$token,$password){
         $user = 'SELECT * FROM users';
         $user .= self::addWhereStatement(array("email" => $email));

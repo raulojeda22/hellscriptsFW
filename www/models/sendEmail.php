@@ -1,4 +1,12 @@
 <?
+/**
+ * Sends an email using the mailgun api
+ *
+ * @param string $email receiver
+ * @param string $subject
+ * @param string $html email content
+ * @return boolean result of the request
+ */
 function sendEmail($email,$subject,$html){
     try {
         $config = array();

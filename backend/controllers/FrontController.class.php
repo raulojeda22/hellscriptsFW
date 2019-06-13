@@ -1,6 +1,15 @@
 <?
+/**
+ * Main class to manage the incoming requests to the API
+ */
 class FrontController {
 
+    /**
+     * Sets the uri that will be used to get the params on the url depending if it's running on
+     * a local machine or in a server
+     *
+     * @return void
+     */
     public function FrontController(){
         $this->uri=$_SERVER['REQUEST_URI'];
         if ($_SERVER['HTTP_HOST']=='localhost'||$_SERVER['HTTP_HOST']=='127.0.0.1'||$_SERVER['HTTP_HOST']=='192.168.22.129'){
@@ -10,6 +19,11 @@ class FrontController {
         }
     }
 
+    /**
+     * Checks the request and the resources to validate it and runs the query and response
+     *
+     * @return void
+     */
     public function run(){
         $this->uri=rtrim($this->uri, '/');
         $cutUrl=explode('/',$this->uri);
