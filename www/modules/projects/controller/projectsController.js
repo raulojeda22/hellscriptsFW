@@ -1,3 +1,10 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:projectsCtrl
+  *
+  * @description
+  * Manages the projects CRUD
+*/
 hellscripts.controller('projectsCtrl', function ($scope, services, projects,$cookies,$window,toastr) {
     if (projects.length==0 && typeof $cookies.get('idUser')==='undefined'){
         $window.location.href = '#/users';
@@ -5,6 +12,12 @@ hellscripts.controller('projectsCtrl', function ($scope, services, projects,$coo
     } else {
         $scope.crudProjectsPage = true;
         $scope.projects=projects;
+
+        /**
+         * Deletes a project by it's id
+         * 
+         * @param {int} id project db id
+         */
         $scope.deleteProject = function(id){
             document.getElementById('project'+id).style.display = 'none';
             services.delete('projects',{id: id}).then(function(data){
@@ -15,14 +28,25 @@ hellscripts.controller('projectsCtrl', function ($scope, services, projects,$coo
                 }
             });
         }
+        /**
+         * Shows the create project page
+         */
         $scope.createPage = function(){
             $scope.createProjectPage = true;
             $scope.crudProjectsPage = false;
         }
+
+        /**
+         * Shows the crud page
+         */
         $scope.crudPage = function(){
             $scope.createProjectPage = false;
             $scope.crudProjectsPage = true;
         }
+
+        /**
+         * Creates a project using the data on the create form
+         */
         $scope.createProject = function(){
             postData=$scope.create;
             postData.idUser=$cookies.get('idUser');

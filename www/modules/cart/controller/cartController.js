@@ -1,3 +1,10 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:cartCtrl
+  *
+  * @description
+  * Manages the cart page
+*/
 hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,loginService,toastr,cart) {
     $scope.projects=[];
     $scope.productArray = [];
@@ -13,6 +20,11 @@ hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,log
         });
     });
 
+    /**
+     * Adds 1 project to the cart
+     * @name cartPost
+     * @param {*} button
+     */
     $scope.cartPost = function(button){
         idProject=button.project.id;
         idUser=$cookies.get('idUser');
@@ -27,6 +39,11 @@ hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,log
 
     };
 
+    /**
+     * Removes 1 project from the cart
+     * @name cartDelete
+     * @param {object} button
+     */
     $scope.cartDelete = function(button){
         idProject=button.project.id;
         if ($scope.productArray[idProject][0] != undefined){
@@ -38,7 +55,12 @@ hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,log
         }
     };
 
-    $scope.projectDelete = function(button){
+   /**
+    * Removes all the projects of the selected type from the cart
+    * @name projectDelete
+    * @param {object} button
+    */
+   $scope.projectDelete = function(button){
         services.delete('cart',{idUser: $cookies.get('idUser'), idProject: button.project.id}).then(function(response){
             if (response){
                 $scope.projects = $scope.projects.filter(function(value,index){
@@ -51,14 +73,31 @@ hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,log
         });
     };
 
+    /**
+     * Returns the total price of the project
+     * @name totalProjectPrice
+     * @param {object} button
+     * @returns int
+     */
     $scope.totalProjectPrice = function(button){
         return $scope.productArray[button.project.id].length * button.project.price;
     }
 
+    /**
+     * Returns the total count of the projects
+     * @name totalProjects
+     * @param {object} button
+     * @returns {int}
+     */
     $scope.totalProjects = function(button){
         return $scope.productArray[button.project.id].length;
     }
 
+    /**
+     * Returns the total price of all the projects
+     * @name totalPrice
+     * @returns {string}
+     */
     $scope.totalPrice = function(){
         var total = 0;
         $scope.projects.forEach(function (element,index) {
@@ -67,6 +106,10 @@ hellscripts.controller('cartCtrl', function($scope,services,$cookies,$window,log
         return total+' €';
     };
 
+    /**
+     * Buys all the projects in the cart and empties it
+     * @name checkoutCart
+     */
     $scope.checkoutCart = function(){
         services.post('checkout',{}).then(function(response){
             if (response){

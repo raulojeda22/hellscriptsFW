@@ -1,5 +1,15 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:loginCtrl
+  *
+  * @description
+  * Manages the user actions
+*/
 hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope,$cookies,$window,loginService,toastr) {
 
+	/**
+	 * Submits a login request, logs a user in if it's successfull
+	 */
 	$scope.submitLogin = function(){
 		loginService.logout();
 		var object = {};
@@ -26,6 +36,9 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 		});
 	};
 
+	/**
+	 * Adds a user to the page and sends him an activation email
+	 */
 	$scope.submitRegister = function(){
 		loginService.logout();
 		var object = {};
@@ -62,6 +75,9 @@ hellscripts.controller('loginCtrl', function($scope,services,$timeout,$rootScope
 		});
 	}
 
+	/**
+	 * Sends the recover password email to the mail entered on the login form
+	 */
 	$scope.recoverPassword = function(){
 		var object = {};
 		object.email=$scope.login.email;

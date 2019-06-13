@@ -1,3 +1,10 @@
+/**
+  * @ngdoc service
+  * @name hellscripts.services
+  * 
+  * @description
+  * Performs all the authorized requests to the internal api
+**/
 hellscripts.factory("services", ['$http', '$q', '$cookies',function ($http, $q, $cookies) {
    var serviceBase = 'api/';
    var obj = {};

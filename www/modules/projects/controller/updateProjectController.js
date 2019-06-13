@@ -1,13 +1,22 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:updateProjectCtrl
+  *
+  * @description
+  * The controller of the page to update any project
+*/
 hellscripts.controller('updateProjectCtrl', function ($scope, services, project,$cookies,$window,toastr,$route) {
     if (project.length==0 && typeof $cookies.get('idUser')==='undefined'){
         $window.location.href = '#/users';
 		$window.location.reload();
     } else {
-        console.log(project);
         $scope.update = project[0];
         $scope.update.price = parseInt(project[0].price);
+
+        /**
+         * Updates the project info using the new form info
+         */
         $scope.updateProject = function(){
-            console.log($scope.update);
             find={};
             find.id=$route.current.params.id;
             project=$scope.update;

@@ -1,8 +1,18 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:profileCtrl
+  *
+  * @description
+  * Manages the login page
+*/
 hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,loginService,toastr,$rootScope,user) {
 	if (typeof user === 'undefined'){
 		$window.location.href = '#/users';
 		$window.location.reload();
 	} else {
+		/**
+		 * hides the content of the page
+		 */
 		function hideData(){
 			$scope.updateMenu=false;
 			$scope.userMenu=false;
@@ -18,14 +28,26 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 		$scope.updateData.name = user.name;
 		$scope.updateData.email = user.email;
 		$scope.updateData.avatar = user.avatar;
+
+		/**
+		 * Loads the update profile page
+		 */
 		$scope.updateProfile = function(){
 			hideData();
 			$scope.updateMenu=true;
 		}
+
+		/**
+		 * Loads the user profile page
+		 */
 		$scope.userProfile = function(){
 			hideData();
 			$scope.userMenu=true;
 		}
+
+		/**
+		 * Loads the owned projects page
+		 */
 		$scope.projectsProfile = function(){
 			hideData();
 			$scope.projectsMenu=true;
@@ -33,12 +55,24 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 				$scope.myProjects=data;
 			});
 		}
+
+		/**
+		 * @returns {int} the total price of that order
+		 */
 		$scope.totalOrderPrice = function(button){
 			return ($scope.ordersArray[button.order.id].length * button.order.price )+'€';
 		}
+
+		/**
+		 * @returns {int} the total number of projects on that order
+		 */
 		$scope.totalOrders = function(button){
 			return $scope.ordersArray[button.order.id].length;
 		}	
+
+		/**
+		 * @returns {int} the total price of all the orders
+		 */
 		$scope.totalPrice = function(){
 			var total = 0;
 			$scope.orders.forEach(function (element,index) {
@@ -46,6 +80,10 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 			});
 			return total+'€';
 		};
+
+		/**
+		 * Loads the ordered projects page
+		 */
 		$scope.ordersProfile = function(){
 			hideData();
 			$scope.ordersMenu=true;
@@ -65,6 +103,10 @@ hellscripts.controller('profileCtrl', function($scope,services,$cookies,$window,
 				});
 			});
 		}
+
+		/**
+		 * Updates the user profile
+		 */
 		$scope.update = function(){
 			var find = {};
 			find.id=user.id;

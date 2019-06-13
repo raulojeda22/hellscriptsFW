@@ -1,6 +1,11 @@
 
 var google;
 
+/**
+ * Not used right now, it used to show the location of the IES Estació on the contact page
+ * 
+ * @deprecated
+ */
 function init() {
     var ontinyent = {lat: 38.8102874, lng: -0.6043017};
     

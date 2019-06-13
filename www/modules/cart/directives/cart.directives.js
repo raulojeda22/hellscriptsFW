@@ -1,3 +1,11 @@
+/**
+  * @ngdoc directive
+  * @name cartButton, 
+  * @restrict 'E'
+  * @element ANY 
+  * @description
+  * Directive for the cart button
+**/
 hellscripts.directive('cartButton',function (services,$cookies,toastr) {
     return{
         restrict: 'E',

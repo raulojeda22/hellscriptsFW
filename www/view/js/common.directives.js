@@ -1,3 +1,10 @@
+
+/**
+  * @ngdoc directive
+  * @name js.directive:hellscripts.directive'dropzone', 
+  * @description
+  * Dropzone directive to be able to upload files to the page
+**/
 hellscripts.directive('dropzone', function () {
   return function (scope, element, attrs) {
     var config, dropzone;

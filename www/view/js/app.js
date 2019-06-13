@@ -1,3 +1,8 @@
+/**
+ * @ngdoc module
+ * @name hellscripts.module:hellscripts
+ * @description main module
+ */
 var hellscripts = angular.module('hellscripts',['ngRoute','ngCookies','ui.bootstrap','toastr']);
 hellscripts.config(['$routeProvider', function ($routeProvider) {
     $routeProvider

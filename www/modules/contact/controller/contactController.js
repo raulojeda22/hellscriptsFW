@@ -1,3 +1,10 @@
+/**
+  * @ngdoc controller
+  * @name hellscripts.controller:contactCtrl
+  *
+  * @description
+  * Controller for the contact page
+*/
 hellscripts.controller('contactCtrl', function ($scope, services,toastr) {
     $scope.contact = {
         name: "",
@@ -6,6 +13,9 @@ hellscripts.controller('contactCtrl', function ($scope, services,toastr) {
         message: ""
     };
 
+    /**
+     * Sends an email to the developers of the page
+     */
     $scope.SubmitContact = function () {
         var object = {};
         Object.keys($scope.contact).forEach(function(key) {
