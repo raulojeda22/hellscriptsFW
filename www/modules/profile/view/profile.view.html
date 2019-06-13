@@ -6,6 +6,7 @@
         <button ng-click="userProfile()" class="btn btn-primary" id="userProfile">Profile</button>
         <button ng-click="updateProfile()" class="btn btn-primary" id="updateProfile">Update profile</button>
         <button ng-click="projectsProfile()" class="btn btn-primary" id="projectProfile">Created projects</button>
+        <button ng-click="ordersProfile()" class="btn btn-primary" id="projectProfile">Ordered projects</button>
     </div>
     <br>
     <br>
@@ -109,6 +110,37 @@
         <div class="row" id="allProfileProjects">
             <div class="alignColumn col-lg-2 col-md-3 col-sm-4" ng-repeat="project in myProjects">
                 <project/>
+            </div>
+        </div>
+    </div>
+    <div ng-show="ordersMenu" class="container">
+        <div class="table-responsive" id="allTableCartDiv">
+            <table class="table table-condensed table-dark" id="cartTableCart">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price €</th>
+                        <th>Count</th>
+                        <th>Total €</th>
+                    </tr>
+                </thead>
+                <tbody id="allTableCartBody">
+                    <tr ng-repeat="order in orders" id="order{{order.id}}">
+                        <td><img src="{{order.image}}" height="125px" width="125px"></td>
+                        <td><h1>{{order.id}}</h1></td>
+                        <td><h1>{{order.name}}</h1></td>
+                        <td><h1 id="price{{order.id}}">{{order.price}}€</h1></td>
+                        <td><h1 id="count{{order.id}}">{{totalOrders(this)}}</h1></td>
+                        <td><h1 class="orderPrice" id="totalPrice{{order.id}}">{{totalOrderPrice(this)}}</h1></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-2 pull-right">
+                <h1 id="totalPrice">Total: {{totalPrice()}}</h1>
             </div>
         </div>
     </div>
